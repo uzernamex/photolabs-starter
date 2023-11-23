@@ -6,7 +6,8 @@ import '../styles/PhotoFavButton.scss';
 const PhotoFavButton = () => {
   const [isClicked, setIsClicked] = useState(false);
   
-  const handleClick = () => {
+  const handleButtonClick = () => {
+  
     setIsClicked(!isClicked);
   };
   return (<button className={`photo-fav-button ${isClicked ? 'liked' : ''}`}

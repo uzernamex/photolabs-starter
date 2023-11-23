@@ -1,5 +1,6 @@
 import React from 'react';
 import PhotoListItem from './components/PhotoListItem';
+import TopicList from './components/TopicList';
 // import PhotoList from './components/PhotoList';
 import './App.scss';
 
@@ -57,17 +58,14 @@ const sampleDataForPhotoList = [
     },
   },
 ];
-
-const App = () => {
-  // const photos = Array.from(Array(3));
-  
-  // return (
-  <div className="App">
-    {sampleDataForPhotoList.map((photoData)=> (
-      <PhotoListItem key={photoData.id} data={photoData}/>
+const App = () => (
+  <div className='App'>
+    <TopicList />
+    {sampleDataForPhotoList.map((photoData) => (
+      <PhotoListItem key={photoData.id} data={photoData} />
     ))}
-    </div>
+  </div>
+);
 
- };
     
   export default App;
