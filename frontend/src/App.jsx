@@ -1,8 +1,11 @@
 import React from "react";
+import photos from "mocks/photos";
 import PhotoListItem from "./components/PhotoListItem";
 import TopicList from "./components/TopicList";
 import "./App.scss";
 import TopNavigation from "./components/TopNavigationBar";
+import topics from "mocks/topics";
+import HomeRoute from "routes/HomeRoute";
 
 const sampleDataForPhotoList = [
   {
@@ -60,9 +63,12 @@ const sampleDataForPhotoList = [
 
 const App = () => {
   return (
-    <div className="App">
-      <TopNavigation/>
-      <TopicList />
+    <div className="App">  
+      <TopicList /> 
+    <HomeRoute photos={photos} topics={topics} />
+
+    
+
       {sampleDataForPhotoList.map((photoData) => (
         <PhotoListItem key={photoData.id} data={photoData} />
       ))}
