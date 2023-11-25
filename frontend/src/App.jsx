@@ -1,10 +1,9 @@
-import React from 'react';
-import PhotoListItem from './components/PhotoListItem';
-import TopicList from './components/TopicList';
-// import PhotoList from './components/PhotoList';
-import './App.scss';
+import React from "react";
+import PhotoListItem from "./components/PhotoListItem";
+import TopicList from "./components/TopicList";
+import "./App.scss";
+import TopNavigation from "./components/TopNavigationBar";
 
-// import PhotoFavButton from 'components/PhotoFavButton';
 const sampleDataForPhotoList = [
   {
     id: "1",
@@ -58,14 +57,17 @@ const sampleDataForPhotoList = [
     },
   },
 ];
-const App = () => (
-  <div className='App'>
-    <TopicList />
-    {sampleDataForPhotoList.map((photoData) => (
-      <PhotoListItem key={photoData.id} data={photoData} />
-    ))}
-  </div>
-);
 
-    
-  export default App;
+const App = () => {
+  return (
+    <div className="App">
+      <TopNavigation/>
+      <TopicList />
+      {sampleDataForPhotoList.map((photoData) => (
+        <PhotoListItem key={photoData.id} data={photoData} />
+      ))}
+    </div>
+  );
+};
+
+export default App;

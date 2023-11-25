@@ -8,25 +8,8 @@ const sampleDataForTopicListItem = {
   label: "Nature",
 };
 
-const TopicListItem = ({topic}) => (
-  <div className="topic-list-item">
-    {topic.title}
-  </div>
-);
-
-//   return (
-//     <div className="topic-list__item">
-//       {/* Insert React */}
-//     </div>
-//   );
-// };
-
-// const TopicListItem = () => {
-//   return (
-//     <div className="topic-list__item">
-//       {/* Insert React */}
-//     </div>
-//   );
-// };
+const TopicListItem = ({ topic }) => {
+  return <div className="topic-list__item">{topic.title}</div>;
+};
 
 export default TopicListItem;

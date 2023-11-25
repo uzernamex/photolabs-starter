@@ -21,20 +21,13 @@ const sampleDataForTopicList = [
 ];
 
 const TopicList = () => {
-  return ( 
-  <div className="top-nav-bar__topic-list">
-    {sampleDataForTopicList.map((topic, index) => (
-      <TopicListItem key={index} topic={topic} />
+  return (
+    <div className="top-nav-bar__topic-list">
+      {sampleDataForTopicList.map((topic) => (
+        <TopicListItem key={topic.id} topic={topic} />
       ))}
-      </div>
-  )
-}
-
-//   return (
-//    
-//       {/* Insert React */}
-//     </div>
-//   );
-// };
+    </div>
+  );
+};
 
 export default TopicList;

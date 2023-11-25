@@ -1,6 +1,6 @@
 import React from 'react';
-
 import '../styles/TopNavigationBar.scss'
+
 
 const TopNavigation = () => {
   return (
