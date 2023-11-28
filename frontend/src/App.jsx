@@ -8,7 +8,7 @@ import "./App.scss";
 import TopNavigation from "./components/TopNavigationBar";
 import topics from "mocks/topics";
 import HomeRoute from "routes/HomeRoute";
-
+import PhotoFavButton from "components/PhotoFavButton";
 const sampleDataForPhotoList = [
   {
     id: "1",

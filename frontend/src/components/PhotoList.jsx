@@ -63,13 +63,16 @@ const PhotoList = ({ photos, toggleFavouriteState, favourites }) => {
     <div className="photo-list">
       {sampleDataForPhotoList.map((photoData) => (
         <div key={photoData.id} className="photo-list__item">
-          <PhotoFavButton />
-          <PhotoListItem data={photoData}
-            photoId={photoData.id}
+          <PhotoFavButton
+            photoID={photoData.id}
             toggleFavouriteState={toggleFavouriteState}
             isFavourited={favourites.includes(photoData.id)}
           />
-          
+          <PhotoListItem
+            data={photoData}
+            toggleFavouriteState={toggleFavouriteState}
+            isFavourited={favourites.includes(photoData.id)}
+          />
         </div>
       ))}
     </div>

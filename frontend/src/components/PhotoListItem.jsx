@@ -9,12 +9,8 @@ const PhotoListItem = ({data, toggleFavouriteState, isFavourited }) => {
    return (
     <div className="photo-list__item">
     <img src={imageSource} alt={`Photo${id}`} />
-    <PhotoFavButton
-    photoId={id}
-    toggleFavouriteState={toggleFavouriteState}
-    isFavourited={isFavourited}
-    
-    />
+
+
     </div>
 );
 }
