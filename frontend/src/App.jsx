@@ -1,3 +1,5 @@
+//APP.JSX
+
 import React from "react";
 import photos from "mocks/photos";
 import PhotoListItem from "./components/PhotoListItem";
