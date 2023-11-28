@@ -25,10 +25,18 @@ console.log(typeof toggleFavouriteStatus);
     <div className="home-route">
       <TopNavigation topics={topics} favouritesCount={favourites.length} />
       <PhotoList
+      
         photos={photos}
         toggleFavouriteState={toggleFavouriteStatus}
         favourites={favourites}
       />
+        {/* {sampleDataForPhotoList.map((photoData) => (
+        <PhotoListItem
+        key={photoData.id}
+        data={photoData}
+        onClick={handlePhotoClick} 
+        />
+      ))} */}
     </div>
   );
 };
