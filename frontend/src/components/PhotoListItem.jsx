@@ -1,90 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
+import PhotoDetailsModal from "routes/PhotoDetailsModal";
 
-const sampleDataForPhotoList = [
-  {
-    id: "1",
-    location: {
-      city: "Montreal",
-      country: "Canada",
-    },
-    urls: {
-      full: `${process.env.PUBLIC_URL}/Image-1-Full.jpeg`,
-      regular: `${process.env.PUBLIC_URL}/Image-1-Regular.jpeg`,
-    },
-    user: {
-      id: "1",
-      username: "exampleuser",
-      name: "Joe Example",
-      profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
-    },
-  },
-  {
-    id: "2",
-    location: {
-      city: "Toronto",
-      country: "Canada",
-    },
-    urls: {
-      full: `${process.env.PUBLIC_URL}/Image-2-Full.jpeg`,
-      regular: `${process.env.PUBLIC_URL}/Image-2-Regular.jpeg`,
-    },
-    user: {
-      id: "2",
-      username: "exampleuser",
-      name: "Joe Example",
-      profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
-    },
-  },
-  {
-    id: "3",
-    location: {
-      city: "Ottawa",
-      country: "Canada",
-    },
-    urls: {
-      full: `${process.env.PUBLIC_URL}/Image-3-Full.jpeg`,
-      regular: `${process.env.PUBLIC_URL}/Image-3-Regular.jpeg`,
-    },
-    user: {
-      id: "3",
-      username: "exampleuser",
-      name: "Joe Example",
-      profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
-    },
-  },
-];
-
-const PhotoListItem = ({ data, onClick }) => {
-  const { id, urls, user} = data;
+const PhotoListItem = ({ data }) => {
+  const { id, urls, user, location } = data;
   const { regular: imageSource } = urls;
   const { username } = user;
-   
+  // const {where} = location.city;
+  const [modalOpened, setModalOpened] = useState(false);
+
   const handlePhotoClick = () => {
-    onClick();
-  }
-  
+    setModalOpened(true);
+  };
+  const closeModal = () => {
+    setModalOpened(false);
+  };
+
   return (
-  <div className="photo-list__items" onClick={handlePhotoClick}>
-    <img src={imageSource} alt={`Photo${id}`} />
-    <div className="photo-list__user-info">
-      <p>{`Photographer: ${username}`}</p>
+    <div className="photo-list__items" onClick={handlePhotoClick}>
+      <img src={imageSource} alt={`Photo${id}`} />
+      <div className="photo-list__user-info">
+        <p>{`Photographer: ${username}`}</p>
+        {/* <p>{`Location: ${where}`}</p> */}
       </div>
     </div>
-    );
-  };
-  
-  const PhotoList = ({ photos, onClick }) => {
-    return (
-    <div className="photo-list">
-      {sampleDataForPhotoList.map((photoData) => (
-      <PhotoListItem key={photoData.id} data={photoData} onClick={onClick}/>
-      ))}
-      </div>
-      );
-          };
-      
-    
-    
-    export default {PhotoListItem, photoList};
+  );
+};
+
+export default PhotoListItem;
