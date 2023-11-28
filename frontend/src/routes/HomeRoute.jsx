@@ -9,11 +9,10 @@ import photos from "mocks/photos";
 import { useState } from "react";
 
 const HomeRoute = ({ topics }) => {
-  //set state with array as default state
   const [favourites, setFavourites] = useState([]);
+const [favouritesCount, setFavouritesCount] = useState(0);
 
-  //manage likes and favourites state
-  const toggleFavouriteStatus = (photoID) => {
+const toggleFavouriteStatus = (photoID) => {
     if (favourites.includes(photoID)) {
       setFavourites(favourites.filter((id) => id !== photoID));
     } else {
