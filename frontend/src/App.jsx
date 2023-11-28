@@ -65,11 +65,9 @@ const sampleDataForPhotoList = [
 
 const App = () => {
   return (
-    <div className="App">  
-      <TopicList /> 
-    <HomeRoute photos={photos} topics={topics} />
-
-    
+    <div className="App">
+      <TopicList />
+      <HomeRoute photos={photos} topics={topics} />
 
       {sampleDataForPhotoList.map((photoData) => (
         <PhotoListItem key={photoData.id} data={photoData} />

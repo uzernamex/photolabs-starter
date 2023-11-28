@@ -1,30 +1,24 @@
 //PHOTO FAV BUTTON
 
-import React, { useState } from 'react';
-import FavIcon from './FavIcon';
-import '../styles/PhotoFavButton.scss';
+import React, { useState } from "react";
+import FavIcon from "./FavIcon";
+import "../styles/PhotoFavButton.scss";
 
-const PhotoFavButton = () => {
-  const [isClicked, setIsClicked] = useState(false);
-  
+const PhotoFavButton = ({ photoID, toggleFavouriteState, isFavourited }) => {
   const handleButtonClick = () => {
-    setIsClicked(!isClicked);
+    toggleFavouriteState(photoID);
   };
-  
+
   return (
-  <button
-  className={`'photo-fav-button' ${isClicked ? 'photo-list__fav-icon' : 'photo-list__fav-icon-svg'}`}
-  onClick={handleButtonClick}>
-
-  {isClicked ? ' clicked' : 'not clicked'}    
-
-
- <FavIcon />
-</button> 
-);
+    <button
+      className={`photo-fav-button ${isFavourited ? "liked" : ""}`}
+      onClick={handleButtonClick}>
+      {isFavourited ? "Favourited" : "Not Favourited"}
+      <FavIcon isFavourited={isFavourited} />
+    </button>
+  );
 };
 
-// className={`photo-fav-button ${isClicked ? 'liked' : ''}`} 
-
+// className={`photo-fav-button ${isClicked ? 'liked' : ''}`}
 
 export default PhotoFavButton;
