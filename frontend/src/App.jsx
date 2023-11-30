@@ -11,7 +11,6 @@ import PhotoFavButton from "components/PhotoFavButton";
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
 
 
-
 const App = () => {
   const [selected, setSelected] = useState(null); //currently selected photo
   const [favorites, setFavourites] = useState([]); //favourite photos
