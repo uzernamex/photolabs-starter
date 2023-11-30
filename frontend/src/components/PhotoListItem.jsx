@@ -4,7 +4,6 @@ import PhotoFavButton from "./PhotoFavButton";
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
 
 
-
 const sampleDataForPhotoList = [
   {
     id: "1",
@@ -60,7 +59,7 @@ const sampleDataForPhotoList = [
 ];
 
 
-const PhotoListItem = ({ data, onClick, closedModal }) => {
+const PhotoListItem = ({ data, onClick, closedModal, favouriteThisPhoto }) => {
   const { id, urls, user, location } = data;
   const { regular: imageSource } = urls;
 
@@ -71,20 +70,22 @@ const PhotoListItem = ({ data, onClick, closedModal }) => {
   const closeModal = () => {
     closedModal();
   };
-  
-  // const closeModal = () => {
-  //   setModalOpened(false);
-  //   closedModal();
-  // };
 
-  return (
+// const favouriteThisPhoto = () => {
+
+// }
+// const isFavourited = false; 
+
+return (
     <div className="photo-list__items" onClick={handlePhotoClick}>
       <img className="photo-list__image"src={imageSource} alt={`Photo${id}`} />
       <div className="photo-list__user-info">
         <p>{` ${user.name}`}</p>
         <p>{` ${location.city}, ${location.country}`}</p>
       </div>
-      <button onClick={closeModal}>X</button>
+      <button onClick={() => favouriteThisPhoto(id)}>
+       x
+      </button>
     </div>
   );
 };

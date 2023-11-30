@@ -4,7 +4,7 @@ import "../styles/PhotoDetailsModal.scss";
 import closeSymbol from "../assets/closeSymbol.svg";
 import photos from "mocks/photos";
 
-const PhotoDetailsModal = ({ selectedPhoto, similarImages }) => {
+const PhotoDetailsModal = ({ selectedPhoto, similarImages, onClose }) => {
   return (
     <div className="photo-details-modal">
       <div className="photo-details-modal__selected-photo">

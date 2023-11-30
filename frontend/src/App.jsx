@@ -13,33 +13,46 @@ import PhotoDetailsModal from "routes/PhotoDetailsModal";
 
 
 const App = () => {
-  const [select, setSelect] = useState(null);
+  const [selected, setSelected] = useState(null); //currently selected photo
+  const [favorites, setFavourites] = useState([]); //favourite photos
  
   const handlePhotoClick = (photoData) => {
     console.log("Photo modial clicked")
-    setSelect(photoData);
+    setSelected(photoData);
   };
 
   const closedModal = () => {
-    setSelect(null);
+    setSelected(null);
+  };
+
+  const favouriteThisPhoto = (photoId) => {
+    setFavourites((previousFavourites) => {
+      if (previousFavourites.includes(photoId)) {
+        return previousFavourites.filter((id) => id !== photoId);
+      } else {
+        return [...previousFavourites, photoId]
+      }
+    });
+
   };
 
   return (
     <div className="App">
       <TopicList />
       <HomeRoute photos={photos} topics={topics} />
-{/* 
-      {sampleDataForPhotoList.map((photoData) => (
-        <PhotoListItem
-        key={photoData.id}
-        data={photoData}
-        onClick={handlePhotoClick}
-        closedModal={closedModal}
-        />
-      ))}
-      { select && <PhotoDetailsModal photoData={select} />} */}
-    </div>
-  );
-};
+      {/* ///*** */}
+      { selected && (
+      <PhotoDetailsModal 
+      selectedPhoto={selected}
+      // similarImages={}
+      isFavourite={favorites.includes(selected.id)}
+      onClose={closeModal}
+      favouriteThisPhoto={favouriteThisPhoto}
+/>
+      )}
+  </div>
+  )
+};  
+
 
 export default App;
