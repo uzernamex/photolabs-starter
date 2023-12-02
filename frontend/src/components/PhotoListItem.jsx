@@ -1,8 +1,9 @@
+// FILE: PhotoListItem.jsx
+
 import React, { useState } from "react";
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
-
 
 const sampleDataForPhotoList = [
   {
@@ -58,7 +59,6 @@ const sampleDataForPhotoList = [
   },
 ];
 
-
 const PhotoListItem = ({ data, onClick, closedModal, favouriteThisPhoto }) => {
   const { id, urls, user, location } = data;
   const { regular: imageSource } = urls;
@@ -67,25 +67,15 @@ const PhotoListItem = ({ data, onClick, closedModal, favouriteThisPhoto }) => {
     onClick(data);
   };
 
-  const closeModal = () => {
-    closedModal();
-  };
-
-// const favouriteThisPhoto = () => {
-
-// }
-// const isFavourited = false; 
-
-return (
+  return (
     <div className="photo-list__items" onClick={handlePhotoClick}>
-      <img className="photo-list__image"src={imageSource} alt={`Photo${id}`} />
+      <img className="photo-list__image" src={imageSource} alt={`Photo${id}`} />
       <div className="photo-list__user-info">
+        {/* <div><img src={user}/></div> */}
         <p>{` ${user.name}`}</p>
         <p>{` ${location.city}, ${location.country}`}</p>
       </div>
-      <button onClick={() => favouriteThisPhoto(id)}>
-       x
-      </button>
+      <button onClick={() => favouriteThisPhoto(id)}>x</button>
     </div>
   );
 };

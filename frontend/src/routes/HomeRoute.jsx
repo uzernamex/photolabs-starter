@@ -1,44 +1,62 @@
 //HOME ROUTE
-
-import React from "react";
+import React, { useState } from "react";
 import "../styles/HomeRoute.scss";
 import PhotoList from "components/PhotoList";
-import PhotoListItem from "components/PhotoListItem";
 import TopNavigation from "components/TopNavigationBar";
 import photos from "mocks/photos";
-import { useState } from "react";
 
-const HomeRoute = ({ topics }) => {
-  const [favourites, setFavourites] = useState([]);
-const [favouritesCount, setFavouritesCount] = useState(0);
-
-const toggleFavouriteStatus = (photoID) => {
-    if (favourites.includes(photoID)) {
-      setFavourites(favourites.filter((id) => id !== photoID));
-    } else {
-      setFavourites([...favourites, photoID]);
-    }
+const HomeRoute = ({
+  topics,
+  state,
+  updateFavs,
+  setPhotoSelected,
+  onClosePhotoDetailsModal,
+}) => {
+  const toggleFavouriteStatus = (photoID) => {
+    updateFavs(photoID);
   };
-console.log(typeof toggleFavouriteStatus); 
+
+  const handlePhotoClick = (photoData) => {
+    console.log("photo modal clicked");
+    setPhotoSelected(photoData);
+  };
+  const closedModal = () => {
+    // closedModal();
+    onClosePhotoDetailsModal();
+  };
 
   return (
     <div className="home-route">
-      <TopNavigation topics={topics} favouritesCount={favourites.length} />
+      <TopNavigation
+        topics={topics}
+        favouritesCount={state.favourites.length}
+      />
       <PhotoList
-      
         photos={photos}
         toggleFavouriteState={toggleFavouriteStatus}
-        favourites={favourites}
+        favourites={state.favourites}
+        onPhotoClick={handlePhotoClick}
+        onCloseModal={closedModal}
       />
-        {/* {sampleDataForPhotoList.map((photoData) => (
-        <PhotoListItem
-        key={photoData.id}
-        data={photoData}
-        onClick={handlePhotoClick} 
-        />
-      ))} */}
     </div>
   );
 };
 
 export default HomeRoute;
+
+{
+  //   if (favourites.includes(photoID)) {
+  //     setFavourites(favourites.filter((id) => id !== photoID));
+  //   } else {
+  //     setFavourites([...favourites, photoID]);
+  //   }
+  // };
+  // console.log(typeof toggleFavouriteStatus);
+  /* {sampleDataForPhotoList.map((photoData) => (
+        <PhotoListItem
+        key={photoData.id}
+        data={photoData}
+        onClick={handlePhotoClick} 
+        />
+      ))} */
+}

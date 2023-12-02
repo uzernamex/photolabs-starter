@@ -58,9 +58,31 @@ const sampleDataForPhotoList = [
   },
 ];
 
-const PhotoList = ({ photos, toggleFavouriteState, favourites }) => {
+const PhotoList = ({
+  photos,
+  toggleFavouriteState,
+  favourites,
+  onPhotoClick,
+}) => {
   return (
     <div className="photo-list">
+      {photos.map((photo) => (
+        <div key={photo.id} className="photo-list__item">
+          <PhotoFavButton
+            photoID={photo.id}
+            toggleFavouriteState={toggleFavouriteState}
+            isFavourited={favourites.includes(photo.id)}
+          />
+          <PhotoListItem
+            key={photo.id}
+            data={photo}
+            onClick={onPhotoClick}
+            toggleFavouriteState={toggleFavouriteState}
+            isFavourited={favourites.includes(photo.id)}
+          />
+        </div>
+      ))}
+
       {sampleDataForPhotoList.map((photoData) => (
         <div key={photoData.id} className="photo-list__item">
           <PhotoFavButton
@@ -69,14 +91,20 @@ const PhotoList = ({ photos, toggleFavouriteState, favourites }) => {
             isFavourited={favourites.includes(photoData.id)}
           />
           <PhotoListItem
+            key={photoData.id}
             data={photoData}
             toggleFavouriteState={toggleFavouriteState}
             isFavourited={favourites.includes(photoData.id)}
+            onClick={onPhotoClick}
           />
         </div>
       ))}
     </div>
   );
 };
+//       toggleFavouriteState={toggleFavouriteState}
+//       isFavourited={favourites.includes(photoData.id)}
+//     />
+// </div>
 
 export default PhotoList;
