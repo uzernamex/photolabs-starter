@@ -1,5 +1,3 @@
-// FILE: PhotoListItem.jsx
-
 import React, { useState } from "react";
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
@@ -71,7 +69,6 @@ const PhotoListItem = ({ data, onClick, closedModal, favouriteThisPhoto }) => {
     <div className="photo-list__items" onClick={handlePhotoClick}>
       <img className="photo-list__image" src={imageSource} alt={`Photo${id}`} />
       <div className="photo-list__user-info">
-        {/* <div><img src={user}/></div> */}
         <p>{` ${user.name}`}</p>
         <p>{` ${location.city}, ${location.country}`}</p>
       </div>

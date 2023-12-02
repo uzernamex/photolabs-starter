@@ -1,4 +1,3 @@
-//HOME ROUTE
 import React, { useState } from "react";
 import "../styles/HomeRoute.scss";
 import PhotoList from "components/PhotoList";
@@ -21,7 +20,6 @@ const HomeRoute = ({
     setPhotoSelected(photoData);
   };
   const closedModal = () => {
-    // closedModal();
     onClosePhotoDetailsModal();
   };
 
@@ -43,20 +41,3 @@ const HomeRoute = ({
 };
 
 export default HomeRoute;
-
-{
-  //   if (favourites.includes(photoID)) {
-  //     setFavourites(favourites.filter((id) => id !== photoID));
-  //   } else {
-  //     setFavourites([...favourites, photoID]);
-  //   }
-  // };
-  // console.log(typeof toggleFavouriteStatus);
-  /* {sampleDataForPhotoList.map((photoData) => (
-        <PhotoListItem
-        key={photoData.id}
-        data={photoData}
-        onClick={handlePhotoClick} 
-        />
-      ))} */
-}

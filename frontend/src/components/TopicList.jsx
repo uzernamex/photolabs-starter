@@ -1,5 +1,3 @@
-//TopicList.jsx
-
 import React from "react";
 import TopicListItem from "./TopicListItem";
 import "../styles/TopicList.scss";
