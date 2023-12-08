@@ -19,11 +19,11 @@ const PhotoDetailsModal = ({ selectedPhoto, similarImages, onClose }) => {
 
   return (
     <div className="photo-details-modal">
-      <div className="photo-details-modal__selected-photo">
+      <div className="photo-details-modal">
         <img
           src={selectedPhoto.urls.full}
           alt={`${selectedPhoto.id}`}
-          className={isPhotoClicked ? "photo-details-modal__image" : ""}
+          className={isPhotoClicked ? "photo-details-modal" : ""}
           onClick={handlePhotoClick}
         />
       </div>

@@ -8,18 +8,21 @@ const HomeRoute = ({
   topics,
   state,
   updateFavs,
-  setPhotoSelected,
+  setSelectedPhoto,
   onClosePhotoDetailsModal,
 }) => {
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
+
   const toggleFavouriteStatus = (photoID) => {
     updateFavs(photoID);
   };
 
   const handlePhotoClick = (photoData) => {
-    console.log("photo modal clicked");
-    setPhotoSelected(photoData);
+    setSelectedPhoto(photoData);
   };
+
   const closedModal = () => {
+    setSelectedPhoto(null);
     onClosePhotoDetailsModal();
   };
 
@@ -36,6 +39,14 @@ const HomeRoute = ({
         onPhotoClick={handlePhotoClick}
         onCloseModal={closedModal}
       />
+      {selectedPhoto && (
+        <div className="photo-details-modal">
+          <img 
+          src={selectedPhoto.urls.full} 
+          alt={`${selectedPhoto.id}`} 
+          />
+        </div>
+      )}
     </div>
   );
 };
