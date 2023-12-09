@@ -18,7 +18,7 @@ const App = () => {
     onLoadTopic,
   } = useApplicationData();
 
-  const [isModalOpen, setModalOpen] = useState(false);
+
 
   const toggleModal = () => {
     setModalOpen(!isModalOpen);

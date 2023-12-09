@@ -11,22 +11,29 @@ const PhotoDetailsModal = ({ selectedPhoto, similarImages, onClose }) => {
   if (!selectedPhoto || !selectedPhoto[0]) {
     return null;
   }
-  const { urls, user, location } = selectedPhoto[0];
 
   const handlePhotoClick = () => {
-    setPhotoClicked(true);
+    setPhotoClicked(!onPhotoClick);
   };
 
   return (
     <div className="photo-details-modal">
-      <div className="photo-details-modal">
-        <img
-          src={selectedPhoto.urls.full}
-          alt={`${selectedPhoto.id}`}
-          className={isPhotoClicked ? "photo-details-modal" : ""}
-          onClick={handlePhotoClick}
-        />
-      </div>
+      <img
+        src={selectedPhoto[0].urls.full}
+        alt={`${selectedPhoto[0].id}`}
+        className={onPhotoClick ? "photo-details-modal__image" : ""}
+        onClick={handlePhotoClick}
+      />
+      {onPhotoClick && (
+        <div>
+          <button
+            className="photo-details-modal__close-button"
+            onClick={onClose}
+          >
+            close modal
+          </button>
+        </div>
+      )}
       <div className="photo-details-modal__similar-photos">
         <h2>Similar Photos</h2>
         <div className="photo-details-modal__similar-photos-list">
@@ -35,9 +42,6 @@ const PhotoDetailsModal = ({ selectedPhoto, similarImages, onClose }) => {
           ))}
         </div>
       </div>
-      <button className="photo-details-modal__close-button" onClick={onClose}>
-        <img src={closeSymbol} alt="close symbol" />
-      </button>
     </div>
   );
 };

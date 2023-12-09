@@ -10,8 +10,14 @@ const HomeRoute = ({
   updateFavs,
   setSelectedPhoto,
   onClosePhotoDetailsModal,
+  // onOpenModal
 }) => {
+  const [isModalOpen, setModalOpen] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState(null);
+
+  const toggleModal = () => {
+    setModalOpen(!isModalOpen);
+  };
 
   const toggleFavouriteStatus = (photoID) => {
     updateFavs(photoID);
@@ -19,11 +25,13 @@ const HomeRoute = ({
 
   const handlePhotoClick = (photoData) => {
     setSelectedPhoto(photoData);
+    toggleModal();
   };
 
   const closedModal = () => {
     setSelectedPhoto(null);
     onClosePhotoDetailsModal();
+    setModalOpen(false);
   };
 
   return (
@@ -34,12 +42,12 @@ const HomeRoute = ({
       />
       <PhotoList
         photos={photos}
-        toggleFavouriteState={toggleFavouriteStatus}
+        toggleFavouriteState={updateFavs}
         favourites={state.favourites}
         onPhotoClick={handlePhotoClick}
         onCloseModal={closedModal}
       />
-      {selectedPhoto && (
+      {selectedPhoto && isModalOpen && (
         <div className="photo-details-modal">
           <img 
           src={selectedPhoto.urls.full} 
