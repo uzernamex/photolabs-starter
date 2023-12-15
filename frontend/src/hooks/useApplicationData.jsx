@@ -23,7 +23,7 @@ const useApplicationData = () => {
       }
     });
   };
-  const setPhotoSelected = (photoData) => {
+  const setSelectedPhoto = (photoData) => {
     setState((prev) => ({
       ...prev,
       selectedPhoto: photoData,
@@ -36,12 +36,18 @@ const useApplicationData = () => {
     }));
   };
   const onLoadTopic = () => {};
+  const onPhotoClick = (photoData) => {
+    setSelectedPhoto(photoData);
+
+  };
+
   return {
     state,
     updateFavs,
-    setPhotoSelected,
+    setSelectedPhoto,
     onClosePhotoDetailsModal,
     onLoadTopic,
+    onPhotoClick,
   };
 };
 
