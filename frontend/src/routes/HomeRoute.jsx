@@ -11,14 +11,9 @@ const HomeRoute = ({
   state,
   updateFavs,
   setSelectedPhoto,
-  // onClosePhotoDetailsModal,
   toggleModal,
-  similarImages,
 }) => {
   const { onPhotoClick } = useApplicationData();
-
-  // const [isPhotoClicked, setPhotoClicked] = useState(false);
-
 
   const toggleFavouriteStatus = (photoID) => {
     updateFavs(photoID);
@@ -26,15 +21,11 @@ const HomeRoute = ({
 
   const handlePhotoClick = (photoData) => {
     setSelectedPhoto(photoData);
-    // onPhotoClick(true);
-
-    // setPhotoClicked(true);
-toggleModal();
+    toggleModal();
     console.log("togglin'");
   };
 
   const handleCloseModal = () => {
-    // onClosePhotoDetailsModal();
     setModalOpen(false);
   };
 
@@ -44,6 +35,7 @@ toggleModal();
 
   return (
     <div className="home-route">
+      
       <TopNavigation
         topics={topics}
         favouritesCount={state.favourites.length}
@@ -55,17 +47,10 @@ toggleModal();
         onPhotoClick={handlePhotoClick}
         // onPhotoClick={(photoData) => setSelectedPhoto(photoData)}
         onClose={handleCloseModal}
+        toggleModal={toggleModal}
       />
-      
     </div>
   );
 };
 
 export default HomeRoute;
-
-//   const handlePhotoClick = (photoData) => {
-//   setSelectedPhoto(photoData);
-//   console.log("togglin'");
-//   setPhotoClicked(true);
-//   handleToggleModal();
-// };

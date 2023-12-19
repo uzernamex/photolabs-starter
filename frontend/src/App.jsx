@@ -63,67 +63,45 @@ const sampleDataForPhotoList = [
   },
 ];
 
-
 const App = () => {
   const { state, updateFavs, setSelectedPhoto, onClosePhotoDetailsModal } =
-    useApplicationData();
-
+  useApplicationData();
+  
   const [isModalOpen, setModalOpen] = useState(false);
-
-  const toggleModal = () => {
+  
+  const toggleModal = (photos) => {
     setModalOpen(!isModalOpen);
   };
-  // const openModal = (photo) => {
-  //   setModalOpen(false);
-
-  //   setSelectedPhoto(null);
-  // };
-
+  
   return (
     <div className="App">
+    {isModalOpen && (
+    <PhotoDetailsModal
+    selectedPhoto={sampleDataForPhotoList[0]}
+    // similarImages={similarImages} //
+    // onClose={handleCloseModal}
+    // onPhotoClick={handlePhotoClick}
+    // onClose={onClosePhotoDetailsModal}
+    isModalOpen={isModalOpen}
+    toggleModal={toggleModal}
+    // isPhotoClicked={isPhotoClicked}
+    />
+    )}
       {/* <TopicList /> */}
       <HomeRoute
-        // photos={photos}
-        topics={topics}
+          toggleModal={toggleModal}
+          topics={topics}
         state={state}
         updateFavs={updateFavs}
         setSelectedPhoto={setSelectedPhoto}
         onClosePhotoDetailsModal={onClosePhotoDetailsModal}
         // onLoadTopic={onLoadTopic}
         // similarImages={similarImages}
-        toggleModal={toggleModal}
-      />
-      {/* {state.selectedPhoto && !isModalOpen && ( */}
-      {isModalOpen && (
-        <PhotoDetailsModal
-          selectedPhoto={sampleDataForPhotoList[0]}
-          // similarImages={similarImages} //
-          // onClose={handleCloseModal}
-          // onPhotoClick={handlePhotoClick}
-          // onClose={onClosePhotoDetailsModal}
-          isModalOpen={isModalOpen}
-          toggleModal={toggleModal}
-          // isPhotoClicked={isPhotoClicked}
+      
         />
-       )} 
 
-      {/* {state.selectedPhoto && !isModalOpen && (
-        <PhotoDetailsModal
-          selectedPhoto={state.selectedPhoto}
-          // similarImages={similarImages}
-          // onClose={handleCloseModal}
-          // toggleModal={handleToggleModal}
-          // onPhotoClick={handlePhotoClick}
-          // isPhotoClicked={isPhotoClicked}
-          //  isFavourite={state.favourites.includes(state.selectedPhoto.id)}
-          // onClose={onClosePhotoDetailsModal}
-          // favouriteThisPhoto={updateFavs}
-           />
-       )      
-      } */}
-      {/* // {isModalOpen && state.selectedPhoto && ( */}
-      {/* // <PhotoDetailsModal onClose={onClosePhotoDetailsModal} /> */}
-    </div>
+
+        </div>
   );
 };
 

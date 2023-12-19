@@ -4,13 +4,16 @@ import "../styles/PhotoDetailsModal.scss";
 import closeSymbol from "../assets/closeSymbol.svg";
 
 const PhotoDetailsModal = ({
+  data, 
+  onClick,
   selectedPhoto,
   similarImages,
   onClose,
-  // toggleModal,
   onPhotoClick,
   isModalOpen,
 }) => {
+  const {urls} = data || {};
+  const {regular} = urls || {};
   const [onPhotoClickState, setPhotoClicked] = useState(isModalOpen);
 
   // useEffect(() => {
@@ -18,7 +21,6 @@ const PhotoDetailsModal = ({
   // }, [isModalOpen]);
 
 
-  
   const handlePhotoClick = () => {
     setPhotoClicked(true);
     onPhotoClick();
@@ -28,12 +30,12 @@ const PhotoDetailsModal = ({
     onClose();
   };
   
-  useEffect(()=>{
-    console.log("loaded photo")
-  },[]);
+  // useEffect(()=>{
+  //   console.log("loaded photo")
+  // },[]);
   // const { urls } = selectedPhoto[0];
   
-  return (
+  return (  
 
     <div className={`photo-details-modal__images ${
       onPhotoClickState ? "photo-details-modal__image" : ""
@@ -49,11 +51,15 @@ const PhotoDetailsModal = ({
       </div>
       <div className="photo-details-modal__similar-photos">
         <h2>Similar Photos</h2>
+
+
+
+        
         <div className="photo-details-modal__similar-photos-list">
-          {/* {similarImages.map((photo) => (
+          {similarImages &&similarImages.map((photo) => (
             <PhotoListItem key={photo.id} data={photo} onClick={() => {}} />
-          ))} */}
-        </div>
+          ))}
+          </div>
       </div>
       {/* {onPhotoClickState && (
         <button
@@ -63,7 +69,8 @@ const PhotoDetailsModal = ({
           <img src={closeSymbol} alt="close symbol" />
         </button>
       )} */}
-    </div>
+</div>
+// </div>
   );
 };
 

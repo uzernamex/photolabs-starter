@@ -59,7 +59,7 @@ const sampleDataForPhotoList = [
 
 const PhotoListItem = ({ data, onClick, closedModal, favouriteThisPhoto }) => {
   const { id, urls, user, location } = data;
-  const { regular: imageSource } = urls;
+  const { full, regular: imageSource } = urls;
 
   const handlePhotoClick = () => {
     onClick(data);
@@ -72,7 +72,6 @@ const PhotoListItem = ({ data, onClick, closedModal, favouriteThisPhoto }) => {
         <p>{` ${user.name}`}</p>
         <p>{` ${location.city}, ${location.country}`}</p>
       </div>
-     
     </div>
   );
 };
