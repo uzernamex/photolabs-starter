@@ -63,6 +63,7 @@ const PhotoList = ({
   toggleFavouriteState,
   favourites,
   onPhotoClick,
+  setModalOpen,
 }) => {
   return (
     <div className="photo-list">
@@ -79,6 +80,7 @@ const PhotoList = ({
             onClick={onPhotoClick}
             toggleFavouriteState={toggleFavouriteState}
             isFavourited={favourites.includes(photo.id)}
+            setModalOpen={setModalOpen}
           />
         </div>
       ))}

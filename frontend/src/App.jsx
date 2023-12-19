@@ -72,33 +72,35 @@ const App = () => {
     onLoadTopic,
   } = useApplicationData();
 
+const [modalOpen, setModalOpen] = useState(false);
 
 
-  const toggleModal = () => {
-    setModalOpen(!isModalOpen);
-  };
+  // const toggleModal = () => {
+  //   setModalOpen(!isModalOpen);
+  // };
   
   return (
     <div className="App">
-    {isModalOpen && (
+    {modalOpen && (
     <PhotoDetailsModal
     selectedPhoto={sampleDataForPhotoList[0]}
     // similarImages={similarImages} //
     // onClose={handleCloseModal}
     // onPhotoClick={handlePhotoClick}
     // onClose={onClosePhotoDetailsModal}
-    isModalOpen={isModalOpen}
-    toggleModal={toggleModal}
+    modalOpen={modalOpen}
+    // toggleModal={toggleModal}
     // isPhotoClicked={isPhotoClicked}
     />
     )}
       {/* <TopicList /> */}
       <HomeRoute
-          toggleModal={toggleModal}
+          setModalOpen={setModalOpen}
+          // {toggleModal}
           topics={topics}
         state={state}
         updateFavs={updateFavs}
-        setSelectedPhoto={setSelectedPhoto}
+        // setSelectedPhoto={setSelectedPhoto}
         onClosePhotoDetailsModal={onClosePhotoDetailsModal}
         // onLoadTopic={onLoadTopic}
         // similarImages={similarImages}

@@ -57,7 +57,7 @@ const sampleDataForPhotoList = [
   },
 ];
 
-const PhotoListItem = ({ data, onClick, closedModal, favouriteThisPhoto }) => {
+const PhotoListItem = ({ data, onClick, closedModal, favouriteThisPhoto, setModalOpen }) => {
   const { id, urls, user, location } = data;
   const { full, regular: imageSource } = urls;
 
@@ -67,7 +67,7 @@ const PhotoListItem = ({ data, onClick, closedModal, favouriteThisPhoto }) => {
 
   return (
     <div className="photo-list__items" onClick={handlePhotoClick}>
-      <img className="photo-list__image" src={imageSource} alt={`Photo${id}`} />
+      <img onClick={() => setModalOpen(true)} className="photo-list__image" src={imageSource} alt={`Photo${id}`} />
       <div className="photo-list__user-info">
         <p>{` ${user.name}`}</p>
         <p>{` ${location.city}, ${location.country}`}</p>

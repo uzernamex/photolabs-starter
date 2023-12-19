@@ -24,9 +24,9 @@ const PhotoDetailsModal = ({
   const handlePhotoClick = () => {
     setPhotoClicked(true);
     onPhotoClick();
-  if (!selectedPhoto || !selectedPhoto[0]) {
-    return null;
-  }
+  // if (!selectedPhoto || !selectedPhoto[0]) {
+  //   return null;
+  // }
   }
   // const handlePhotoClick = () => {
   //   setPhotoClicked(!onPhotoClick);
@@ -43,8 +43,8 @@ const PhotoDetailsModal = ({
   
   return (  
 
-    <div className={`photo-details-modal__images ${
-      onPhotoClickState ? "photo-details-modal__image" : ""
+    <div className={`photo-details-modal ${
+      onPhotoClickState ? "photo-details-modal" : ""
       }`}
     >
       <div className="photo-details-modal__top-bar"></div>
