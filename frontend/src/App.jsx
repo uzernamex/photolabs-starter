@@ -64,12 +64,17 @@ const sampleDataForPhotoList = [
 ];
 
 const App = () => {
-  const { state, updateFavs, setSelectedPhoto, onClosePhotoDetailsModal } =
-  useApplicationData();
-  
-  const [isModalOpen, setModalOpen] = useState(false);
-  
-  const toggleModal = (photos) => {
+  const {
+    state,
+    updateFavs,
+    setPhotoSelected,
+    onClosePhotoDetailsModal,
+    onLoadTopic,
+  } = useApplicationData();
+
+
+
+  const toggleModal = () => {
     setModalOpen(!isModalOpen);
   };
   

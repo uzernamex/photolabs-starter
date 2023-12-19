@@ -11,9 +11,15 @@ const HomeRoute = ({
   state,
   updateFavs,
   setSelectedPhoto,
-  toggleModal,
+  onClosePhotoDetailsModal,
+  // onOpenModal
 }) => {
-  const { onPhotoClick } = useApplicationData();
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [selectedPhoto, setSelectedPhotos] = useState(null);
+
+  const toggleModal = () => {
+    setModalOpen(!isModalOpen);
+  };
 
   const toggleFavouriteStatus = (photoID) => {
     updateFavs(photoID);
@@ -22,10 +28,11 @@ const HomeRoute = ({
   const handlePhotoClick = (photoData) => {
     setSelectedPhoto(photoData);
     toggleModal();
-    console.log("togglin'");
   };
 
-  const handleCloseModal = () => {
+  const closedModal = () => {
+    setSelectedPhoto(null);
+    onClosePhotoDetailsModal();
     setModalOpen(false);
   };
 
@@ -49,6 +56,14 @@ const HomeRoute = ({
         onClose={handleCloseModal}
         toggleModal={toggleModal}
       />
+      {selectedPhoto && isModalOpen && (
+        <div className="photo-details-modal">
+          <img 
+          src={selectedPhoto.urls.full} 
+          alt={`${selectedPhoto.id}`} 
+          />
+        </div>
+      )}
     </div>
   );
 };
