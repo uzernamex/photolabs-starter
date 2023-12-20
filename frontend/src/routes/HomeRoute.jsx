@@ -11,6 +11,10 @@ const HomeRoute = ({
   state,
   updateFavs,
   setSelectedPhoto,
+  // similarImages,
+  // onClose,
+  // onPhotoClick,
+  // isModalOpen,
   onClosePhotoDetailsModal,
   setModalOpen,
   // onOpenModal
@@ -26,9 +30,16 @@ const HomeRoute = ({
     updateFavs(photoID);
   };
 
+  // const handlePhotoClick = () => {
+  //   // setSelectedPhoto(photoData);
+  //   toggleModal();
+  // };
   const handlePhotoClick = (photoData) => {
-    // setSelectedPhoto(photoData);
-    toggleModal();
+    setModalOpen(true)
+    // onClick(data);
+    onPhotoClick(data);
+    // setSelectedPhoto(data);
+    setModalOpen(data);
   };
 
   const closedModal = () => {
@@ -49,6 +60,7 @@ const HomeRoute = ({
         favouritesCount={state.favourites.length}
       />
       <PhotoList
+      state={state}
         photos={photos}
         toggleFavouriteState={updateFavs}
         favourites={state.favourites}
@@ -57,6 +69,9 @@ const HomeRoute = ({
         // onClose={handleCloseModal}
         // toggleModal={toggleModal}
         setModalOpen={setModalOpen}
+       
+        // setSelectedPhoto={setSelectedPhoto}
+      
       />
       {/* {selectedPhoto && isModalOpen && <PhotoDetailsModal/>} */}
     </div>

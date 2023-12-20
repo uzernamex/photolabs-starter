@@ -4,29 +4,31 @@ import "../styles/PhotoDetailsModal.scss";
 import closeSymbol from "../assets/closeSymbol.svg";
 
 const PhotoDetailsModal = ({
-  data, 
+  data,
   onClick,
   selectedPhoto,
   similarImages,
   onClose,
   onPhotoClick,
   isModalOpen,
+  setSelectedPhoto,
 }) => {
-  const {urls} = data || {};
-  const {regular} = urls || {};
+  // const { urls } = data || {};
+  const { urls } = selectedPhoto || {};
+  const { regular } = urls || {};
   const [onPhotoClickState, setPhotoClicked] = useState(isModalOpen);
+  // console.log(selectedPhoto);
 
   // useEffect(() => {
   //   setPhotoClicked(isModalOpen);
   // }, [isModalOpen]);
 
-
   const handlePhotoClick = () => {
     setPhotoClicked(true);
     onPhotoClick();
-  // if (!selectedPhoto || !selectedPhoto[0]) {
-  //   return null;
-  // }
+    // if (!selectedPhoto || !selectedPhoto[0]) {
+    //   return null;
+    // }
   }
   // const handlePhotoClick = () => {
   //   setPhotoClicked(!onPhotoClick);
@@ -34,69 +36,48 @@ const PhotoDetailsModal = ({
   const handleCloseButtonClick = () => {
     setPhotoClicked(false);
     onClose();
+    // setSelectedPhoto(false);
   };
-  
+
   // useEffect(()=>{
   //   console.log("loaded photo")
   // },[]);
   // const { urls } = selectedPhoto[0];
-  
-  return (  
 
+  return (
     <div className={`photo-details-modal ${
-      onPhotoClickState ? "photo-details-modal" : ""
-      }`}
-    >
+        onPhotoClickState ? "photo-details-modal" : ""}`}>
       <div className="photo-details-modal__top-bar"></div>
       <div className={`photo-details-modal__image`}>
         <img
-          src={`Image-1-Full.jpeg`}
-          alt={`${selectedPhoto.id}`}
+          src={regular} //send selected photo as prop
           onClick={handlePhotoClick}
+          // alt={`${selectedPhoto.id}`}
         />
-      </div>
-  {/* return (
-    <div className="photo-details-modal">
-      <img
-        src={selectedPhoto[0].urls.full}
-        alt={`${selectedPhoto[0].id}`}
-        className={onPhotoClick ? "photo-details-modal__image" : ""}
-        onClick={handlePhotoClick}
-      />
-      {onPhotoClick && (
-        <div>
+        {onPhotoClickState && (
           <button
             className="photo-details-modal__close-button"
-            onClick={onClose}
-          >
-            close modal
+            onClick={handleCloseButtonClick}
+            >
+            <img src={closeSymbol} alt="close symbol" />
           </button>
-        </div>
-      )}
-      <div className="photo-details-modal__similar-photos"> */}
+        )}
+      </div>
+
+      <div className="photo-details-modal__similar-photos-list">
         <h2>Similar Photos</h2>
 
-
-
-        
-        <div className="photo-details-modal__similar-photos-list">
-          {similarImages &&similarImages.map((photo) => (
-            <PhotoListItem key={photo.id} data={photo} onClick={() => {}} />
+        {similarImages &&
+          similarImages.map((photo) => (
+            <PhotoListItem 
+            key={photo.id} 
+            data={photo} 
+            onClick={() => {}}
+            setSelectedPhoto={setSelectedPhoto} 
+            />
           ))}
-          </div>
       </div>
-      /* {onPhotoClickState && (
-        <button
-          className="photo-details-modal__close-button"
-          onClick={handleCloseButtonClick}
-        >
-          <img src={closeSymbol} alt="close symbol" />
-        </button>
-      )} */
-// </div>
-// </div>
-    // </div>
-     );
-
-      };
+    </div>
+  );
+};
 export default PhotoDetailsModal;

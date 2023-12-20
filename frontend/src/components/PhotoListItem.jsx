@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
+// import PhotoDetailsModal from "routes/PhotoDetailsModal";
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
+// import HomeRoute from "routes/HomeRoute";
+// import App from "App";
 
 const sampleDataForPhotoList = [
   {
@@ -57,22 +60,29 @@ const sampleDataForPhotoList = [
   },
 ];
 
-const PhotoListItem = ({ data, onClick, closedModal, favouriteThisPhoto, setModalOpen }) => {
+const PhotoListItem = ({ data, onClick, closedModal, favouriteThisPhoto, setModalOpen, setSelectedPhoto }) => {
   const { id, urls, user, location } = data;
   const { full, regular: imageSource } = urls;
 
   const handlePhotoClick = () => {
-    onClick(data);
+    setSelectedPhoto(data);
+    //  setModalOpen(true)
+    // onClick(data);
   };
-
+//todo: setSelectedphoto to the image being clicked
   return (
-    <div className="photo-list__items" onClick={handlePhotoClick}>
+    <div  onClick={handlePhotoClick}>
       <img onClick={() => setModalOpen(true)} className="photo-list__image" src={imageSource} alt={`Photo${id}`} />
-      <div className="photo-list__user-info">
+<div 
+// className="photo-list__user-details"
+>
+  <img className="photo-list__user-profile" src={user.profile} alt={`Profile${user.id}`}/></div>
+  <div className="photo-list__user-info">
         <p>{` ${user.name}`}</p>
+        <div className="photo-list__user-location">
         <p>{` ${location.city}, ${location.country}`}</p>
-      </div>
-    </div>
+        </div></div>
+        </div>
   );
 };
 
