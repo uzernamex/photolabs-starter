@@ -78,7 +78,6 @@ const PhotoListItem = ({
   const handlePhotoClick = () => {
     setSelectedPhoto(data);
     setModalOpen(true);
-    // isModalOpen(true);
   };
  
   return (

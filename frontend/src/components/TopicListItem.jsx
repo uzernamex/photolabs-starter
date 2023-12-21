@@ -1,5 +1,4 @@
-import React from "react";
-
+import React, {useState, useEffect} from "react";
 import "../styles/TopicListItem.scss";
 
 const sampleDataForTopicListItem = {
@@ -10,7 +9,11 @@ const sampleDataForTopicListItem = {
 //Render topic categories for photos
 
 const TopicListItem = ({ topic }) => {
-  return <div className="topic-list__item">{topic.title}</div>;
-};
+  const handleTopicClick = () => {
+    onTopicClick(topic.id);
+  };
+  return <div className="topic-list__item span" onClick={handleTopicClick}>
+    <div className="topic-list__item">{topic.title}</div>
+</div>};
 
 export default TopicListItem;

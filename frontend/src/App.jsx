@@ -37,7 +37,7 @@ const App = () => {
           
         />
       )}
-      <TopicList />
+    
       <HomeRoute
         setModalOpen={setModalOpen}
         topics={topics}
