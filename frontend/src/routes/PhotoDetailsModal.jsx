@@ -56,30 +56,26 @@ const PhotoDetailsModal = ({
         {onPhotoClickState && (
           <button
             className="photo-details-modal__close-button"
-            onClick={handleCloseButtonClick}
-          >
+            onClick={handleCloseButtonClick}>
             <img src={closeSymbol} alt="close symbol" />
           </button>
         )}
       </div>
       <div className={`photo-details-modal__images`}>
+        
         <PhotoFavButton />
-        <img className="photo-details-modal__image" src={regular} //send selected photo as prop
+        <img
+          className="photo-details-modal__image"
+          src={regular} //send selected photo as prop
           onClick={handlePhotoClick}
         />
-      <div className="photo-details-modal__photographer-details">
-        <img className="photo-list__user-profile"/>
-        <div className="photo-list__user-info">
-          
-          
-
-          
-          <div className="photo-list__user-location">
-            </div>
-            </div>
-            
+        <div className="photo-details-modal__photographer-details">
+          <img className="photo-list__user-profile" />
+          <div className="photo-list__user-info">
+            <div className="photo-list__user-location"></div>
           </div>
         </div>
+      </div>
       <div className="photo-details-modal__similar-photos-list">
         <h2>Similar Photos</h2>
         {similarImages &&

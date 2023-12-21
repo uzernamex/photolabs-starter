@@ -4,7 +4,7 @@ import "../styles/PhotoFavButton.scss";
 
 const PhotoFavButton = ({ photoID, toggleFavouriteState, isFavourited }) => {
   const handleButtonClick = () => {
-    // toggleFavouriteState(photoID); //???
+    toggleFavouriteState(photoID); //???
   };
 
   return (
@@ -14,8 +14,7 @@ const PhotoFavButton = ({ photoID, toggleFavouriteState, isFavourited }) => {
       }`}
       onClick={handleButtonClick}
     >
-      {/* {isFavourited ? "Favourited" : "Not Favourited"} */}
-      <FavIcon isFavourited={isFavourited} />
+      <FavIcon selected={isFavourited} />
     </div>
   );
 };

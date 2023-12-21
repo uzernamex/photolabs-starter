@@ -73,7 +73,8 @@ const PhotoListItem = ({ data, onClick, closedModal, favouriteThisPhoto, setModa
 //todo: setSelectedphoto to the image being clicked
   return (
     <div  onClick={handlePhotoClick}>
-      <img onClick={() => setModalOpen(true)} className="photo-list__image" src={imageSource} alt={`Photo${id}`} />
+      
+      <img onClick={(photoData) => setModalOpen(true)} className="photo-list__image" src={imageSource} alt={`Photo${id}`} />
 <div 
  className="photo-list__user-details"
 >

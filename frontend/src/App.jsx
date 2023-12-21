@@ -8,6 +8,7 @@ import topics from "mocks/topics";
 import HomeRoute from "routes/HomeRoute";
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
 import useApplicationData from "hooks/useApplicationData";
+import PhotoListItem from "components/PhotoListItem";
 
 const App = () => {
   const {
@@ -19,43 +20,28 @@ const App = () => {
     onLoadTopic,
   } = useApplicationData();
 
-const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
-
-  // const toggleModal = () => {
-  //   setModalOpen(!isModalOpen);
-  // };
-  
   return (
     <div className="App">
-    {modalOpen && (
-    <PhotoDetailsModal
-    selectedPhoto={state.selectedPhoto}
-    // similarImages={similarImages} //
-    // onClose={handleCloseModal}
-    // onPhotoClick={handlePhotoClick}
-    // onClose={onClosePhotoDetailsModal}
-    modalOpen={modalOpen}
-    // toggleModal={toggleModal}
-    // isPhotoClicked={isPhotoClicked}
-    />
-    )}
-      {/* <TopicList /> */}
+      {modalOpen && (
+        <PhotoDetailsModal
+          selectedPhoto={state.selectedPhoto}
+          onClose={onClosePhotoDetailsModal}
+          modalOpen={modalOpen}
+        />
+      )}
+      <TopicList />
       <HomeRoute
-          setModalOpen={setModalOpen}
-          // {toggleModal}
-          topics={topics}
+        setModalOpen={setModalOpen}
+        topics={topics}
         state={state}
         updateFavs={updateFavs}
         // setSelectedPhoto={setSelectedPhoto}
         onClosePhotoDetailsModal={onClosePhotoDetailsModal}
         // onLoadTopic={onLoadTopic}
-        // similarImages={similarImages}
-      
-        />
-
-
-        </div>
+      />
+    </div>
   );
 };
 
