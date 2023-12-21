@@ -29,8 +29,12 @@ const App = () => {
           similarImages={Object.values(state.selectedPhoto.similar_photos)}//get values as array
           selectedPhoto={state.selectedPhoto}
           onClose={onClosePhotoDetailsModal}
+          // onClick={handleClose}
           state={state}
-          modalOpen={modalOpen}
+          setModalOpen={setModalOpen}
+          isModalOpen={modalOpen}
+
+          
         />
       )}
       <TopicList />

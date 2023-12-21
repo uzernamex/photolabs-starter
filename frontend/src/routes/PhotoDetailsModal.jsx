@@ -13,21 +13,22 @@ const PhotoDetailsModal = ({
   onClose,
   onPhotoClick,
   isModalOpen,
+  setModalOpen,
   state,
   setSelectedPhoto,
 }) => {
   const { urls } = selectedPhoto || {};
   const { regular } = urls || {};
   const [onPhotoClickState, setPhotoClicked] = useState(isModalOpen);
-  // console.log(selectedPhoto);
 
   const handlePhotoClick = () => {
-     setPhotoClicked(true);
+    setPhotoClicked(true);
     onPhotoClick();
   };
 
   const handleCloseButtonClick = () => {
     setPhotoClicked(false);
+    setModalOpen(false);
     onClose();
   };
 
@@ -39,14 +40,17 @@ const PhotoDetailsModal = ({
     >
       <div className="photo-details-modal__top-bar">
         {" "}
-        {onPhotoClickState && (
-          <button
-            className="photo-details-modal__close-button"
-            onClick={handleCloseButtonClick}
-          >
-            <img src={closeSymbol} alt="close symbol" />
-          </button>
-        )}
+        {/* {onPhotoClickState && ( */}
+        <button
+          className="photo-details-modal__close-button"
+          onClick={handleCloseButtonClick}
+          // onClick={() => {
+            // setModalOpen(false);
+          // }}
+        >
+          <img src={closeSymbol} alt="close symbol" />
+        </button>
+        {/* )} */}
       </div>
       <div className={`photo-details-modal__images`}>
         <PhotoFavButton />

@@ -70,14 +70,17 @@ const PhotoListItem = ({
   favouriteThisPhoto,
   setModalOpen,
   setSelectedPhoto,
+  isModalOpen,
 }) => {
   const { id, urls, user, location } = data;
   const { full, regular: imageSource } = urls;
 
   const handlePhotoClick = () => {
     setSelectedPhoto(data);
+    setModalOpen(true);
+    // isModalOpen(true);
   };
-  //todo: setSelectedphoto to the image being clicked
+ 
   return (
     <div onClick={handlePhotoClick}>
       <img
