@@ -35,11 +35,11 @@ const HomeRoute = ({
   //   toggleModal();
   // };
   const handlePhotoClick = (photoData) => {
-    setModalOpen(true)
+    setModalOpen(true);
     // onClick(data);
-    onPhotoClick(data);
-    // setSelectedPhoto(data);
-    setModalOpen(data);
+    onPhotoClick(photoData);
+    setSelectedPhoto(photoData);
+    setModalOpen(photoData);
   };
 
   const closedModal = () => {
@@ -54,13 +54,12 @@ const HomeRoute = ({
 
   return (
     <div className="home-route">
-      
       <TopNavigation
         topics={topics}
         favouritesCount={state.favourites.length}
       />
       <PhotoList
-      state={state}
+        state={state}
         photos={photos}
         toggleFavouriteState={updateFavs}
         favourites={state.favourites}
@@ -69,9 +68,7 @@ const HomeRoute = ({
         // onClose={handleCloseModal}
         // toggleModal={toggleModal}
         setModalOpen={setModalOpen}
-       
-        // setSelectedPhoto={setSelectedPhoto}
-      
+        setSelectedPhoto={setSelectedPhoto}
       />
       {/* {selectedPhoto && isModalOpen && <PhotoDetailsModal/>} */}
     </div>

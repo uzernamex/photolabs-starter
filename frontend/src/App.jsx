@@ -26,8 +26,10 @@ const App = () => {
     <div className="App">
       {modalOpen && (
         <PhotoDetailsModal
+          similarImages={Object.values(state.selectedPhoto.similar_photos)}//get values as array
           selectedPhoto={state.selectedPhoto}
           onClose={onClosePhotoDetailsModal}
+          state={state}
           modalOpen={modalOpen}
         />
       )}
@@ -37,7 +39,7 @@ const App = () => {
         topics={topics}
         state={state}
         updateFavs={updateFavs}
-        // setSelectedPhoto={setSelectedPhoto}
+        setSelectedPhoto={setSelectedPhoto}
         onClosePhotoDetailsModal={onClosePhotoDetailsModal}
         // onLoadTopic={onLoadTopic}
       />

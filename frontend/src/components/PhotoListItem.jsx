@@ -61,30 +61,43 @@ const sampleDataForPhotoList = [
   },
 ];
 
-const PhotoListItem = ({ data, onClick, closedModal, favouriteThisPhoto, setModalOpen, setSelectedPhoto }) => {
+const PhotoListItem = ({
+  data,
+  onClick,
+  closedModal,
+  favouriteThisPhoto,
+  setModalOpen,
+  setSelectedPhoto,
+}) => {
   const { id, urls, user, location } = data;
   const { full, regular: imageSource } = urls;
 
   const handlePhotoClick = () => {
     setSelectedPhoto(data);
-    //  setModalOpen(true)
-    // onClick(data);
   };
-//todo: setSelectedphoto to the image being clicked
+  //todo: setSelectedphoto to the image being clicked
   return (
-    <div  onClick={handlePhotoClick}>
-      
-      <img onClick={(photoData) => setModalOpen(true)} className="photo-list__image" src={imageSource} alt={`Photo${id}`} />
-<div 
- className="photo-list__user-details"
->
-  <img className="photo-list__user-profile" src={user.profile} alt={`Profile${user.id}`}/></div>
-  <div className="photo-list__user-info">
+    <div onClick={handlePhotoClick}>
+      <img
+        onClick={(urls) => setModalOpen(true)}
+        className="photo-list__image"
+        src={imageSource}
+        alt={`Photo${id}`}
+      />
+      <div className="photo-list__user-details">
+        <img
+          className="photo-list__user-profile"
+          src={user.profile}
+          alt={`Profile${user.id}`}
+        />
+      </div>
+      <div className="photo-list__user-info">
         <p>{` ${user.name}`}</p>
         <div className="photo-list__user-location">
-        <p>{` ${location.city}, ${location.country}`}</p>
-        </div></div>
+          <p>{` ${location.city}, ${location.country}`}</p>
         </div>
+      </div>
+    </div>
   );
 };
 
