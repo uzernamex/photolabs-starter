@@ -16,36 +16,20 @@ const PhotoDetailsModal = ({
   state,
   setSelectedPhoto,
 }) => {
-  // const { urls } = data || {};
   const { urls } = selectedPhoto || {};
   const { regular } = urls || {};
   const [onPhotoClickState, setPhotoClicked] = useState(isModalOpen);
-  console.log(selectedPhoto);
-
-  // useEffect(() => {
-  //   setPhotoClicked(isModalOpen);
-  // }, [isModalOpen]);
+  // console.log(selectedPhoto);
 
   const handlePhotoClick = () => {
-    setPhotoClicked(true);
+     setPhotoClicked(true);
     onPhotoClick();
-    // if (!selectedPhoto || !selectedPhoto[0]) {
-    //   return null;
-    // }
   };
-  // const handlePhotoClick = () => {
-  //   setPhotoClicked(!onPhotoClick);
-  // };
+
   const handleCloseButtonClick = () => {
     setPhotoClicked(false);
     onClose();
-    // setSelectedPhoto(false);
   };
-
-  // useEffect(()=>{
-  //   console.log("loaded photo")
-  // },[]);
-  // const { urls } = selectedPhoto[0];
 
   return (
     <div
@@ -80,15 +64,7 @@ const PhotoDetailsModal = ({
       </div>
       <div className="photo-details-modal__similar-photos-list">
         <h2>Similar Photos</h2>
-        {/* {similarImages &&
-          similarImages.map((photo) => (
-            <PhotoListItem
-              key={photo.id}
-              data={photo}
-              onClick={() => {}}
-              setSelectedPhoto={setSelectedPhoto}
-            />
-          ))} */}
+
         <PhotoList
           photos={similarImages}
           // toggleFavouriteState={updateFavs}

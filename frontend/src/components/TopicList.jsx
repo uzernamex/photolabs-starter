@@ -25,6 +25,8 @@ const sampleDataForTopicList = [
   },
 ];
 
+// Map through array of photos, sorted by topic (nav bar organization)
+
 const TopicList = () => {
   return (
     <div className="top-nav-bar__topic-list">

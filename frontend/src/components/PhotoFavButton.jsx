@@ -14,7 +14,9 @@ const PhotoFavButton = ({ photoID, toggleFavouriteState, isFavourited }) => {
       }`}
       onClick={handleButtonClick}
     >
+      {/* Change the like button to red when clicked  */}
       <FavIcon selected={isFavourited} />
+      
     </div>
   );
 };

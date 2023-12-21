@@ -61,6 +61,8 @@ const sampleDataForPhotoList = [
   },
 ];
 
+// Handle the modal (open vs close), display photos and their details. 
+
 const PhotoListItem = ({
   data,
   onClick,

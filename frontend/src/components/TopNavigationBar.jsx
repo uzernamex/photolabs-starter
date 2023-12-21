@@ -3,6 +3,8 @@ import FavBadge from "./FavBadge";
 import "../styles/TopNavigationBar.scss";
 import TopicListItem from "./TopicListItem";
 
+// Navigation bar
+
 const TopNavigation = ({ topics, favouritesCount, }) => {
   const [hasFavouritedPhotos, setHasFavouritedPhotos] = useState(false);
 

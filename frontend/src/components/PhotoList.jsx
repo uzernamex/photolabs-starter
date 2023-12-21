@@ -58,6 +58,8 @@ const sampleDataForPhotoList = [
   },
 ];
 
+// Render the photos, toggle favourite/liked status
+
 const PhotoList = ({
   photos,
   toggleFavouriteState,

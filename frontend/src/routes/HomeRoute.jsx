@@ -64,8 +64,7 @@ const HomeRoute = ({
         toggleFavouriteState={updateFavs}
         favourites={state.favourites}
         onPhotoClick={handlePhotoClick}
-        // onPhotoClick={(photoData) => setSelectedPhoto(photoData)}
-        // onClose={handleCloseModal}
+        //onClose={handleCloseModal}
         // toggleModal={toggleModal}
         setModalOpen={setModalOpen}
         setSelectedPhoto={setSelectedPhoto}

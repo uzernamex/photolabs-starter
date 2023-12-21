@@ -7,6 +7,7 @@ const sampleDataForTopicListItem = {
   slug: "topic-1",
   label: "Nature",
 };
+//Render topic categories for photos
 
 const TopicListItem = ({ topic }) => {
   return <div className="topic-list__item">{topic.title}</div>;
