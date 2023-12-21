@@ -68,15 +68,18 @@ const PhotoList = ({
 }) => {
   return (
     <div className="photo-list">
+
       {photos.map((photo) => (
         <div key={photo.id} 
-        className="photo-list__item"
+       className="photo-list__item"
         >
+         
           <PhotoFavButton
             photoID={photo.id}
             toggleFavouriteState={toggleFavouriteState}
             isFavourited={favourites.includes(photo.id)}
-          />
+          /> 
+          {/* <div className="photo-list__item"> */}
           <PhotoListItem
             key={photo.id}
             data={photo}
@@ -84,14 +87,16 @@ const PhotoList = ({
             toggleFavouriteState={toggleFavouriteState}
             isFavourited={favourites.includes(photo.id)}
             setModalOpen={setModalOpen}
-            // setSelectedPhoto={setSelectedPhoto}
+             setSelectedPhoto={setSelectedPhoto}
           />
-        </div>
+          </div>
+        
+      
       ))}
 
       {sampleDataForPhotoList.map((photoData) => (
         <div key={photoData.id} 
-        // className="photo-list__item"
+        className="photo-list__item"
         >
           <PhotoFavButton
             photoID={photoData.id}
@@ -105,6 +110,7 @@ const PhotoList = ({
             toggleFavouriteState={toggleFavouriteState}
             isFavourited={favourites.includes(photoData.id)}
             onClick={onPhotoClick}
+            setSelectedPhoto={setSelectedPhoto}
           />
         </div>
       ))}
