@@ -9,12 +9,12 @@ import HomeRoute from "routes/HomeRoute";
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
 import useApplicationData from "hooks/useApplicationData";
 import PhotoListItem from "components/PhotoListItem";
+import PhotoList from "components/PhotoList";
 
 const App = () => {
   const {
     state,
     updateFavs,
-    // setPhotoSelected,
     setSelectedPhoto,
     onClosePhotoDetailsModal,
     onLoadTopic,
@@ -26,26 +26,23 @@ const App = () => {
     <div className="App">
       {modalOpen && (
         <PhotoDetailsModal
-          similarImages={Object.values(state.selectedPhoto.similar_photos)}//get values as array
+          similarImages={Object.values(state.selectedPhoto.similar_photos)} //get values as array
           selectedPhoto={state.selectedPhoto}
           onClose={onClosePhotoDetailsModal}
-          // onClick={handleClose}
           state={state}
           setModalOpen={setModalOpen}
           isModalOpen={modalOpen}
-
-          
         />
       )}
-    
+
       <HomeRoute
         setModalOpen={setModalOpen}
+        toggleFavouriteState={updateFavs}
         topics={topics}
         state={state}
         updateFavs={updateFavs}
         setSelectedPhoto={setSelectedPhoto}
         onClosePhotoDetailsModal={onClosePhotoDetailsModal}
-        // onLoadTopic={onLoadTopic}
       />
     </div>
   );

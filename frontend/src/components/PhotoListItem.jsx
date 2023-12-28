@@ -68,6 +68,7 @@ const PhotoListItem = ({
   onClick,
   closedModal,
   favouriteThisPhoto,
+  toggleFavouriteState,
   setModalOpen,
   setSelectedPhoto,
   isModalOpen,
