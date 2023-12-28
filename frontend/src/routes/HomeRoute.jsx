@@ -5,42 +5,30 @@ import TopNavigation from "components/TopNavigationBar";
 import photos from "mocks/photos";
 import PhotoDetailsModal from "./PhotoDetailsModal";
 import useApplicationData from "hooks/useApplicationData";
+import App from "App";
 
 const HomeRoute = ({
   topics,
   state,
   updateFavs,
   setSelectedPhoto,
-  // similarImages,
-  // onClose,
-  // onPhotoClick,
-  // isModalOpen,
   onClosePhotoDetailsModal,
   setModalOpen,
-  // onOpenModal
+  handlePhotoClick,
 }) => {
-  // const [isModalOpen, setModalOpen] = useState(false);
   const [selectedPhoto, setSelectedPhotos] = useState(null);
-
-  // const toggleModal = () => {
-  //   setModalOpen(!isodalOpen);
-  // };
 
   const toggleFavouriteStatus = (photoID) => {
     updateFavs(photoID);
   };
 
-  // const handlePhotoClick = () => {
-  //   // setSelectedPhoto(photoData);
-  //   toggleModal();
+  // const handlePhotoClick = (photoData) => {
+  //   setModalOpen(true);
+  //   setSelectedPhoto(photoData);
+
+    //  onPhotoClick(photoData);
+    //  handlePhotoClick(photoData)
   // };
-  const handlePhotoClick = (photoData) => {
-    setModalOpen(true);
-    // onClick(data);
-    onPhotoClick(photoData);
-    setSelectedPhoto(photoData);
-    setModalOpen(photoData);
-  };
 
   const closedModal = () => {
     setSelectedPhoto(null);
@@ -64,12 +52,9 @@ const HomeRoute = ({
         toggleFavouriteState={updateFavs}
         favourites={state.favourites}
         onPhotoClick={handlePhotoClick}
-        //onClose={handleCloseModal}
-        // toggleModal={toggleModal}
         setModalOpen={setModalOpen}
         setSelectedPhoto={setSelectedPhoto}
       />
-      {/* {selectedPhoto && isModalOpen && <PhotoDetailsModal/>} */}
     </div>
   );
 };

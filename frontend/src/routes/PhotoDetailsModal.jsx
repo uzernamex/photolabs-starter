@@ -23,7 +23,7 @@ const PhotoDetailsModal = ({
 
   const handlePhotoClick = () => {
     setPhotoClicked(true);
-    onPhotoClick();
+    onPhotoClick(selectedPhoto);
   };
 
   const handleCloseButtonClick = () => {

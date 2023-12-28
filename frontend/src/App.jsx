@@ -22,6 +22,11 @@ const App = () => {
 
   const [modalOpen, setModalOpen] = useState(false);
 
+  const handlePhotoClick = (photoData) => {
+    setModalOpen(true);
+    setSelectedPhoto(photoData);
+  };
+
   return (
     <div className="App">
       {modalOpen && (
@@ -40,10 +45,12 @@ const App = () => {
         toggleFavouriteState={updateFavs}
         topics={topics}
         state={state}
-        updateFavs={updateFavs}
+        updateFavs={updateFavs}//?
         setSelectedPhoto={setSelectedPhoto}
         onClosePhotoDetailsModal={onClosePhotoDetailsModal}
+        handlePhotoClick={handlePhotoClick}
       />
+      
     </div>
   );
 };
