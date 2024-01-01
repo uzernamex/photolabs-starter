@@ -15,7 +15,8 @@ const PhotoFavButton = ({ photoID, toggleFavouriteState, isFavourited }) => {
       className={`photo-list__fav-icon-svg ${
         isFavourited ? "photo-list__fav-icon" : ""
       }`}
-      onClick={handleButtonClick}>
+      onClick={handleButtonClick}
+    >
       {/* Change the like button to red when clicked  */}
       <FavIcon selected={isFavourited} />
     </div>

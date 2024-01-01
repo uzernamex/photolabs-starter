@@ -1,11 +1,8 @@
+// COMPONENT: 'PhotoListItem'
+// Use the destructured 'data' PROP to display the specified image
+
 import React, { useState } from "react";
 import "../styles/PhotoListItem.scss";
-import PhotoFavButton from "./PhotoFavButton";
-// import PhotoDetailsModal from "routes/PhotoDetailsModal";
-import PhotoDetailsModal from "routes/PhotoDetailsModal";
-import HomeRoute from "routes/HomeRoute";
-import App from "App";
-import useApplicationData from "hooks/useApplicationData";
 
 const sampleDataForPhotoList = [
   {
@@ -72,7 +69,7 @@ const PhotoListItem = ({
   setModalOpen,
   setSelectedPhoto,
   isModalOpen,
-  favourites, 
+  favourites,
   // closedModal,
 }) => {
   const { id, urls, user, location } = data;

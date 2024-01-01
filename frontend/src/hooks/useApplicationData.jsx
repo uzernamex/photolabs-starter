@@ -1,3 +1,5 @@
+//REACT HOOK: 'useApplicationData'
+
 import React, { useState } from "react";
 
 const useApplicationData = () => {
@@ -5,6 +7,7 @@ const useApplicationData = () => {
     selectedPhoto: null,
     favourites: [],
   });
+
   const updateFavs = (photoId) => {
     setState((prev) => {
       if (prev.favourites.includes(photoId)) {
@@ -32,10 +35,13 @@ const useApplicationData = () => {
       selectedPhoto: null,
     }));
   };
-  const onLoadTopic = () => {};
+  
+   const onLoadTopic = () => {};
+
   const onPhotoClick = (photoData) => {
     setSelectedPhoto(photoData);
   };
+
   const toggleFavouriteState = (photoID) => {
     setState((prevState) => ({
       ...prevState,

@@ -1,10 +1,11 @@
+// REACT COMPONENT: 'PhotoList'
+// Render the list of photos
+
 import React from "react";
 import "../styles/PhotoList.scss";
 import PhotoFavButton from "./PhotoFavButton";
 import PhotoListItem from "./PhotoListItem";
-import photos from "mocks/photos";
-import App from "App";
-import HomeRoute from "routes/HomeRoute";
+
 const sampleDataForPhotoList = [
   {
     id: "1",
@@ -59,13 +60,10 @@ const sampleDataForPhotoList = [
   },
 ];
 
-// Render the photos, toggle favourite/liked status
-
 const PhotoList = ({
   photos,
   toggleFavouriteState,
   favourites,
-  // onPhotoClick,
   setModalOpen,
   setSelectedPhoto,
   handlePhotoClick,
@@ -76,22 +74,19 @@ const PhotoList = ({
         <div key={photo.id} className="photo-list__item">
           <PhotoFavButton
             photoID={photo.id}
-            //data={photo}
             toggleFavouriteState={toggleFavouriteState}
             isFavourited={favourites.includes(photo.id)}
           />
           <PhotoListItem
             key={photo.id}
             data={photo}
-            // onClick={onPhotoClick}
             toggleFavouriteState={toggleFavouriteState}
             isFavourited={favourites.includes(photo.id)}
             setModalOpen={setModalOpen}
             setSelectedPhoto={setSelectedPhoto}
             handlePhotoClick={handlePhotoClick}
-          
           />
-          </div>
+        </div>
       ))}
     </div>
   );

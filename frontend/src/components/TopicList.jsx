@@ -1,6 +1,10 @@
+// COMPONENT: 'TopicList'
+// Use COMPONENT 'TopicListItem' to render a list of topics
+
 import React from "react";
 import TopicListItem from "./TopicListItem";
 import "../styles/TopicList.scss";
+import useApplicationData from "hooks/useApplicationData";
 
 const sampleDataForTopicList = [
   {
