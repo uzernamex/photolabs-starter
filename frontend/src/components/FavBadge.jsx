@@ -1,3 +1,5 @@
+// Reusable UI to show favourtited status IF truthy.
+
 import React from "react";
 import FavIcon from "./FavIcon";
 import "../styles/FavBadge.scss";

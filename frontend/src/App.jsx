@@ -1,5 +1,3 @@
-//APP.JSX
-
 import React, { useState } from "react";
 import photos from "mocks/photos";
 import TopicList from "./components/TopicList";
@@ -20,8 +18,6 @@ const App = () => {
     onClosePhotoDetailsModal,
     handleButtonClick,
     // onLoadTopic,
-
-    
   } = useApplicationData();
 
   const [favourites, setFavourites] = useState([]);
@@ -34,31 +30,30 @@ const App = () => {
 
   return (
     <div className="App">
-      {modalOpen && (
+      {modalOpen &&
         state.selectedPhoto &&
         state.selectedPhoto.similar_photos && (
-        <PhotoDetailsModal
-          similarImages={Object.values(state.selectedPhoto.similar_photos)} //get values as array
-          selectedPhoto={state.selectedPhoto} //Modal open (photo)
-          onClose={onClosePhotoDetailsModal}
-          state={state}
-          setModalOpen={setModalOpen}
-          toggleFavouriteState={toggleFavouriteState}
-          isModalOpen={modalOpen}
-          // onPhotoClick={handlePhotoClick}
-          favourites={favourites}
-          handleButtonClick={handleButtonClick}
-          setSelectedPhoto={setSelectedPhoto} //cloSES WIth photo click
-        />
-      )
-      )}
+          <PhotoDetailsModal
+            similarImages={Object.values(state.selectedPhoto.similar_photos)} //get values as array
+            selectedPhoto={state.selectedPhoto} //Modal open (photo)
+            onClose={onClosePhotoDetailsModal}
+            state={state}
+            setModalOpen={setModalOpen}
+            toggleFavouriteState={toggleFavouriteState}
+            isModalOpen={modalOpen}
+            favourites={favourites}
+            handleButtonClick={handleButtonClick}
+            setSelectedPhoto={setSelectedPhoto} //cloSES WIth photo click
+          />
+        )}
 
       <HomeRoute
         setModalOpen={setModalOpen}
-        toggleFavouriteState={updateFavs}
+
+        toggleFavouriteState={toggleFavouriteState}
         topics={topics}
         state={state}
-        updateFavs={updateFavs} //?
+        updateFavs={updateFavs} 
         setSelectedPhoto={setSelectedPhoto}
         onClosePhotoDetailsModal={onClosePhotoDetailsModal}
         handlePhotoClick={handlePhotoClick}

@@ -48,6 +48,7 @@ const useApplicationData = () => {
   return {
     state,
     updateFavs,
+    toggleFavouriteState,
     setSelectedPhoto,
     onClosePhotoDetailsModal,
     onLoadTopic,

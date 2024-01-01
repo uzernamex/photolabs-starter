@@ -13,35 +13,17 @@ const HomeRoute = ({
   topics,
   state,
   updateFavs,
-  // toggleFavouriteState,
+  toggleFavouriteState,
   setSelectedPhoto,
   onClosePhotoDetailsModal,
   setModalOpen,
-  handlePhotoClick
+  handlePhotoClick,
 }) => {
-  const toggleFavouriteState = (photoID) => {
-    updateFavs(photoID);
-  const [selectedPhoto, setSelectedPhotos] = useState(null)
-};
-
-  // const handlePhotoClick = (photoData) => {
-  //   setModalOpen(true);
-  //   setSelectedPhoto(photoData);
-
-  //  onPhotoClick(photoData);
-  //  handlePhotoClick(photoData)
-  // };
-
   const closedModal = () => {
     setSelectedPhoto(null);
     onClosePhotoDetailsModal();
     setModalOpen(false);
   };
-
-  //   const onLoadTopic = () => {
-  //  similarImages(null);
-  //   };
-
   return (
     <div className="home-route">
       <TopNavigation
@@ -53,10 +35,8 @@ const HomeRoute = ({
         photos={photos}
         toggleFavouriteState={updateFavs}
         favourites={state.favourites}
-        // onPhotoClick={handlePhotoClick}
         setModalOpen={setModalOpen}
         setSelectedPhoto={setSelectedPhoto}
-        // toggleFavouriteState={toggleFavouriteState}
         handlePhotoClick={handlePhotoClick}
       />
     </div>

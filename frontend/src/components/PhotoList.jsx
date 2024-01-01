@@ -89,8 +89,9 @@ const PhotoList = ({
             setModalOpen={setModalOpen}
             setSelectedPhoto={setSelectedPhoto}
             handlePhotoClick={handlePhotoClick}
+          
           />
-        </div>
+          </div>
       ))}
     </div>
   );

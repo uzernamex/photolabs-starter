@@ -1,3 +1,6 @@
+// Render the heart icon
+// IF "selected" = truthy THEN fill = red
+
 import React from "react";
 
 const FavIcon = ({ displayAlert, selected }) => {
