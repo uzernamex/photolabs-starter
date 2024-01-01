@@ -3,8 +3,8 @@ import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 // import PhotoDetailsModal from "routes/PhotoDetailsModal";
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
-// import HomeRoute from "routes/HomeRoute";
-// import App from "App";
+import HomeRoute from "routes/HomeRoute";
+import App from "App";
 import useApplicationData from "hooks/useApplicationData";
 
 const sampleDataForPhotoList = [
@@ -61,17 +61,19 @@ const sampleDataForPhotoList = [
   },
 ];
 
-// Handle the modal (open vs close), display photos and their details. 
+// Handle the modal (open vs close), display photos and their details.
 
 const PhotoListItem = ({
   data,
-  onClick,
+  // onClick,
   closedModal,
-  favouriteThisPhoto,
+  // favouriteThisPhoto,
   toggleFavouriteState,
   setModalOpen,
   setSelectedPhoto,
   isModalOpen,
+  favourites, 
+  // closedModal,
 }) => {
   const { id, urls, user, location } = data;
   const { full, regular: imageSource } = urls;
@@ -80,11 +82,11 @@ const PhotoListItem = ({
     setSelectedPhoto(data);
     setModalOpen(true);
   };
- 
+
   return (
     <div onClick={handlePhotoClick}>
       <img
-        onClick={(urls) => setModalOpen(true)}
+        // onClick={(urls) => setModalOpen(true)}
         className="photo-list__image"
         src={imageSource}
         alt={`Photo${id}`}

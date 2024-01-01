@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-
 const useApplicationData = () => {
   const [state, setState] = useState({
     selectedPhoto: null,
@@ -36,7 +35,14 @@ const useApplicationData = () => {
   const onLoadTopic = () => {};
   const onPhotoClick = (photoData) => {
     setSelectedPhoto(photoData);
-
+  };
+  const toggleFavouriteState = (photoID) => {
+    setState((prevState) => ({
+      ...prevState,
+      favourites: prevState.favourites.includes(photoID)
+        ? prevState.favourites.filter((id) => id !== photoID)
+        : [...prevState.favourites, photoID],
+    }));
   };
 
   return {

@@ -3,7 +3,8 @@ import "../styles/PhotoList.scss";
 import PhotoFavButton from "./PhotoFavButton";
 import PhotoListItem from "./PhotoListItem";
 import photos from "mocks/photos";
-
+import App from "App";
+import HomeRoute from "routes/HomeRoute";
 const sampleDataForPhotoList = [
   {
     id: "1",
@@ -64,9 +65,10 @@ const PhotoList = ({
   photos,
   toggleFavouriteState,
   favourites,
-  onPhotoClick,
+  // onPhotoClick,
   setModalOpen,
   setSelectedPhoto,
+  handlePhotoClick,
 }) => {
   return (
     <div className="photo-list">
@@ -74,35 +76,19 @@ const PhotoList = ({
         <div key={photo.id} className="photo-list__item">
           <PhotoFavButton
             photoID={photo.id}
+            //data={photo}
             toggleFavouriteState={toggleFavouriteState}
             isFavourited={favourites.includes(photo.id)}
           />
           <PhotoListItem
             key={photo.id}
             data={photo}
-            onClick={onPhotoClick}
+            // onClick={onPhotoClick}
             toggleFavouriteState={toggleFavouriteState}
             isFavourited={favourites.includes(photo.id)}
             setModalOpen={setModalOpen}
             setSelectedPhoto={setSelectedPhoto}
-          />
-        </div>
-      ))}
-
-      {sampleDataForPhotoList.map((photoData) => (
-        <div key={photoData.id} className="photo-list__item">
-          <PhotoFavButton
-            photoID={photoData.id}
-            toggleFavouriteState={toggleFavouriteState}
-            isFavourited={favourites.includes(photoData.id)}
-          />
-          <PhotoListItem
-            key={photoData.id}
-            data={photoData}
-            toggleFavouriteState={toggleFavouriteState}
-            isFavourited={favourites.includes(photoData.id)}
-            onClick={onPhotoClick}
-            setSelectedPhoto={setSelectedPhoto}
+            handlePhotoClick={handlePhotoClick}
           />
         </div>
       ))}

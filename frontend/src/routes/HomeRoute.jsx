@@ -6,28 +6,30 @@ import photos from "mocks/photos";
 import PhotoDetailsModal from "./PhotoDetailsModal";
 import useApplicationData from "hooks/useApplicationData";
 import App from "App";
+import FavIcon from "components/FavIcon";
+import PhotoListItem from "components/PhotoListItem";
 
 const HomeRoute = ({
   topics,
   state,
   updateFavs,
+  // toggleFavouriteState,
   setSelectedPhoto,
   onClosePhotoDetailsModal,
   setModalOpen,
-  handlePhotoClick,
+  handlePhotoClick
 }) => {
-  const [selectedPhoto, setSelectedPhotos] = useState(null);
-
-  const toggleFavouriteStatus = (photoID) => {
+  const toggleFavouriteState = (photoID) => {
     updateFavs(photoID);
-  };
+  const [selectedPhoto, setSelectedPhotos] = useState(null)
+};
 
   // const handlePhotoClick = (photoData) => {
   //   setModalOpen(true);
   //   setSelectedPhoto(photoData);
 
-    //  onPhotoClick(photoData);
-    //  handlePhotoClick(photoData)
+  //  onPhotoClick(photoData);
+  //  handlePhotoClick(photoData)
   // };
 
   const closedModal = () => {
@@ -51,9 +53,11 @@ const HomeRoute = ({
         photos={photos}
         toggleFavouriteState={updateFavs}
         favourites={state.favourites}
-        onPhotoClick={handlePhotoClick}
+        // onPhotoClick={handlePhotoClick}
         setModalOpen={setModalOpen}
         setSelectedPhoto={setSelectedPhoto}
+        // toggleFavouriteState={toggleFavouriteState}
+        handlePhotoClick={handlePhotoClick}
       />
     </div>
   );

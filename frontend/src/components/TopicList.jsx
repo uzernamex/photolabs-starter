@@ -27,14 +27,14 @@ const sampleDataForTopicList = [
 
 // Map through array of photos, sorted by topic (nav bar organization)
 
-const TopicList = () => {
+const TopicList = (topics, onTopicClick) => {
   return (
     <div className="top-nav-bar__topic-list">
       {sampleDataForTopicList.map((topic) => (
-        <TopicListItem 
-        key={topic.id} 
-        topic={topic}
-        onClick={() => onTopicClick(topic.id)} 
+        <TopicListItem
+          key={topic.id}
+          topic={topic}
+          onClick={() => onTopicClick(topic.id)}
         />
       ))}
     </div>

@@ -8,18 +8,23 @@ import topics from "mocks/topics";
 import HomeRoute from "routes/HomeRoute";
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
 import useApplicationData from "hooks/useApplicationData";
-import PhotoListItem from "components/PhotoListItem";
+import Item from "components/PhotoListItem";
 import PhotoList from "components/PhotoList";
-
+import PhotoFavButton from "components/PhotoFavButton";
 const App = () => {
   const {
     state,
+    toggleFavouriteState,
     updateFavs,
     setSelectedPhoto,
     onClosePhotoDetailsModal,
-    onLoadTopic,
+    handleButtonClick,
+    // onLoadTopic,
+
+    
   } = useApplicationData();
 
+  const [favourites, setFavourites] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
 
   const handlePhotoClick = (photoData) => {
@@ -30,14 +35,22 @@ const App = () => {
   return (
     <div className="App">
       {modalOpen && (
+        state.selectedPhoto &&
+        state.selectedPhoto.similar_photos && (
         <PhotoDetailsModal
           similarImages={Object.values(state.selectedPhoto.similar_photos)} //get values as array
-          selectedPhoto={state.selectedPhoto}
+          selectedPhoto={state.selectedPhoto} //Modal open (photo)
           onClose={onClosePhotoDetailsModal}
           state={state}
           setModalOpen={setModalOpen}
+          toggleFavouriteState={toggleFavouriteState}
           isModalOpen={modalOpen}
+          // onPhotoClick={handlePhotoClick}
+          favourites={favourites}
+          handleButtonClick={handleButtonClick}
+          setSelectedPhoto={setSelectedPhoto} //cloSES WIth photo click
         />
+      )
       )}
 
       <HomeRoute
@@ -45,12 +58,12 @@ const App = () => {
         toggleFavouriteState={updateFavs}
         topics={topics}
         state={state}
-        updateFavs={updateFavs}//?
+        updateFavs={updateFavs} //?
         setSelectedPhoto={setSelectedPhoto}
         onClosePhotoDetailsModal={onClosePhotoDetailsModal}
         handlePhotoClick={handlePhotoClick}
+        favourites={favourites}
       />
-      
     </div>
   );
 };

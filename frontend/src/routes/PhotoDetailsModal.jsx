@@ -7,7 +7,7 @@ import PhotoList from "components/PhotoList";
 
 const PhotoDetailsModal = ({
   data,
-  onClick,
+  // onClick,
   selectedPhoto,
   similarImages,
   onClose,
@@ -16,18 +16,21 @@ const PhotoDetailsModal = ({
   setModalOpen,
   state,
   setSelectedPhoto,
+  toggleFavouriteState,
+  favourites,
 }) => {
   const { urls } = selectedPhoto || {};
   const { regular } = urls || {};
   const [onPhotoClickState, setPhotoClicked] = useState(isModalOpen);
 
-  const handlePhotoClick = () => {
-    setPhotoClicked(true);
-    onPhotoClick(selectedPhoto);
+  const handlePhotoClick = (photoData) => {
+    // setPhotoClicked(true);
+    // onPhotoClick(selectedPhoto);
+    onPhotoClick(photoData);
   };
 
   const handleCloseButtonClick = () => {
-    setPhotoClicked(false);
+    // setPhotoClicked(false);
     setModalOpen(false);
     onClose();
   };
@@ -36,45 +39,57 @@ const PhotoDetailsModal = ({
     <div
       className={`photo-details-modal ${
         onPhotoClickState ? "photo-details-modal" : ""
-      }`}
-    >
+      }`}>
       <div className="photo-details-modal__top-bar">
         {" "}
         {/* {onPhotoClickState && ( */}
         <button
           className="photo-details-modal__close-button"
           onClick={handleCloseButtonClick}
-          // onClick={() => {
-            // setModalOpen(false);
-          // }}
         >
           <img src={closeSymbol} alt="close symbol" />
         </button>
         {/* )} */}
       </div>
       <div className={`photo-details-modal__images`}>
-        <PhotoFavButton />
+        <PhotoFavButton 
+        photoID={selectedPhoto.id}
+        toggleFavouriteState={toggleFavouriteState}
+        isFavourited={favourites.includes(selectedPhoto.id)}
+
+         /> 
         <img
           className="photo-details-modal__image"
-          src={regular} //send selected photo as prop
-          onClick={handlePhotoClick}
+          src={regular} //photo in modal
         />
-        <div className="photo-details-modal__photographer-details">
-          <img className="photo-list__user-profile" />
-          <div className="photo-list__user-info">
-            <div className="photo-list__user-location"></div>
-          </div>
+      </div>
+      <div className="photo-details-modal__photographer-details">
+        <img className="photo-list__user-profile" />
+        <div className="photo-list__user-info">
+          <div className="photo-list__user-location"></div>
         </div>
       </div>
       <div className="photo-details-modal__similar-photos-list">
         <h2>Similar Photos</h2>
-
         <PhotoList
           photos={similarImages}
-          // toggleFavouriteState={updateFavs}
+          toggleFavouriteState={toggleFavouriteState}
           favourites={state.favourites}
+          // onClick={handlePhotoClick}
+          selectedPhoto={state.selectedPhoto}
+          onClose={onClose}
+          state={state}
+          setModalOpen={setModalOpen}
+          isModalOpen={isModalOpen}
+          setSelectedPhoto={setSelectedPhoto}
+          // photos={photos}
+          //  toggleFavouriteState={updateFavs}
+          // favourites={state.favourites}
+          onPhotoClick={handlePhotoClick} ////////////
+          // setModalOpen={setModalOpen}
+          // setSelectedPhoto={setSelectedPhoto}
           // onPhotoClick={handlePhotoClick}
-          // onPhotoClick={(photoData) => setSelectedPhoto(photoData)}
+          //  onPhotoClick={(photoData) => setSelectedPhoto(photoData)}
           // onClose={handleCloseModal}
           // toggleModal={toggleModal}
           // setModalOpen={setModalOpen}
