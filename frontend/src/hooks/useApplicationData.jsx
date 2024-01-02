@@ -30,14 +30,14 @@ const useApplicationData = () => {
       selectedPhoto: photoData,
     }));
   };
-  
+
   const onClosePhotoDetailsModal = () => {
     setState((prev) => ({
       ...prev,
       selectedPhoto: null,
     }));
   };
-  
+
   const onLoadTopic = () => {};
 
   const onPhotoClick = (photoData) => {
@@ -53,7 +53,7 @@ const useApplicationData = () => {
     }));
   };
   const onTopicClick = (topicId) => {
-    console.log('topic clicked with id ${topic.Id');
+    console.log("topic clicked with id ${topic.Id");
   };
 
   return {
@@ -63,7 +63,7 @@ const useApplicationData = () => {
     setSelectedPhoto,
     onClosePhotoDetailsModal,
     onLoadTopic,
-  onTopicClick,
+    onTopicClick,
     onPhotoClick,
   };
 };

@@ -3,13 +3,7 @@ import "../styles/HomeRoute.scss";
 import PhotoList from "components/PhotoList";
 import TopNavigation from "components/TopNavigationBar";
 import photos from "mocks/photos";
-import PhotoDetailsModal from "./PhotoDetailsModal";
-import useApplicationData from "hooks/useApplicationData";
-import App from "App";
-import FavIcon from "components/FavIcon";
-import PhotoListItem from "components/PhotoListItem";
 import TopicList from "components/TopicList";
-import TopicListItem from "components/TopicListItem";
 
 const HomeRoute = ({
   topics,

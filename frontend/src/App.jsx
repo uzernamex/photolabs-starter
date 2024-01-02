@@ -1,15 +1,10 @@
 import React, { useState } from "react";
-import photos from "mocks/photos";
-import TopicList from "./components/TopicList";
 import "./App.scss";
 import topics from "mocks/topics";
 import HomeRoute from "routes/HomeRoute";
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
 import useApplicationData from "hooks/useApplicationData";
-import Item from "components/PhotoListItem";
-import PhotoList from "components/PhotoList";
-import PhotoFavButton from "components/PhotoFavButton";
-import TopicListItem from "components/TopicListItem";
+
 
 const App = () => {
   const {
