@@ -1,4 +1,4 @@
-//REACT HOOK: 'useApplicationData'
+// REACT HOOK: 'useApplicationData'
 
 import React, { useState } from "react";
 
@@ -23,12 +23,14 @@ const useApplicationData = () => {
       }
     });
   };
+
   const setSelectedPhoto = (photoData) => {
     setState((prev) => ({
       ...prev,
       selectedPhoto: photoData,
     }));
   };
+  
   const onClosePhotoDetailsModal = () => {
     setState((prev) => ({
       ...prev,
@@ -36,7 +38,7 @@ const useApplicationData = () => {
     }));
   };
   
-   const onLoadTopic = () => {};
+  const onLoadTopic = () => {};
 
   const onPhotoClick = (photoData) => {
     setSelectedPhoto(photoData);
@@ -50,6 +52,9 @@ const useApplicationData = () => {
         : [...prevState.favourites, photoID],
     }));
   };
+  const onTopicClick = (topicId) => {
+    console.log('topic clicked with id ${topic.Id');
+  };
 
   return {
     state,
@@ -58,6 +63,7 @@ const useApplicationData = () => {
     setSelectedPhoto,
     onClosePhotoDetailsModal,
     onLoadTopic,
+  onTopicClick,
     onPhotoClick,
   };
 };

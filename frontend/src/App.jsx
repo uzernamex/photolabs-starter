@@ -9,6 +9,8 @@ import useApplicationData from "hooks/useApplicationData";
 import Item from "components/PhotoListItem";
 import PhotoList from "components/PhotoList";
 import PhotoFavButton from "components/PhotoFavButton";
+import TopicListItem from "components/TopicListItem";
+
 const App = () => {
   const {
     state,
@@ -17,12 +19,16 @@ const App = () => {
     setSelectedPhoto,
     onClosePhotoDetailsModal,
     handleButtonClick,
-    // onLoadTopic,
+    onTopicClick,
+    onLoadTopic,
   } = useApplicationData();
 
   const [favourites, setFavourites] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
 
+  const handleTopicClick = (topicId) => {
+    onLoadTopic(topicId);
+  };
   const handlePhotoClick = (photoData) => {
     setModalOpen(true);
     setSelectedPhoto(photoData);
@@ -46,18 +52,18 @@ const App = () => {
             setSelectedPhoto={setSelectedPhoto} //cloSES WIth photo click
           />
         )}
-
+      ;
       <HomeRoute
         setModalOpen={setModalOpen}
-
         toggleFavouriteState={toggleFavouriteState}
-        topics={topics}
+        topics={topics} //topics array
         state={state}
-        updateFavs={updateFavs} 
+        updateFavs={updateFavs}
         setSelectedPhoto={setSelectedPhoto}
         onClosePhotoDetailsModal={onClosePhotoDetailsModal}
         handlePhotoClick={handlePhotoClick}
         favourites={favourites}
+        onTopicClick={handleTopicClick}
       />
     </div>
   );

@@ -67,6 +67,8 @@ const PhotoList = ({
   setModalOpen,
   setSelectedPhoto,
   handlePhotoClick,
+  onTopicClick,
+  
 }) => {
   return (
     <div className="photo-list">
@@ -85,6 +87,7 @@ const PhotoList = ({
             setModalOpen={setModalOpen}
             setSelectedPhoto={setSelectedPhoto}
             handlePhotoClick={handlePhotoClick}
+            onTopicClick={onTopicClick}
           />
         </div>
       ))}

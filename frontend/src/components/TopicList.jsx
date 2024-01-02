@@ -5,6 +5,8 @@ import React from "react";
 import TopicListItem from "./TopicListItem";
 import "../styles/TopicList.scss";
 import useApplicationData from "hooks/useApplicationData";
+import topics from "mocks/topics";
+import HomeRoute from "routes/HomeRoute";
 
 const sampleDataForTopicList = [
   {
@@ -28,17 +30,18 @@ const sampleDataForTopicList = [
     title: "Food & Drink",
   },
 ];
-
-// Map through array of photos, sorted by topic (nav bar organization)
-
-const TopicList = (topics, onTopicClick) => {
+const TopicList = ({ topics = [], onTopicClick }) => {
+  const handleTopicClick = (topicId) => {
+    console.log("topic clicked!!!!!!!!!");
+    onTopicClick(topicId);
+  };
   return (
     <div className="top-nav-bar__topic-list">
-      {sampleDataForTopicList.map((topic) => (
+      {topics.map((topic) => (
         <TopicListItem
           key={topic.id}
           topic={topic}
-          onClick={() => onTopicClick(topic.id)}
+          onTopicClick={handleTopicClick}
         />
       ))}
     </div>
