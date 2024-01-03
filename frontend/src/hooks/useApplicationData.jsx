@@ -1,70 +1,98 @@
 // REACT HOOK: 'useApplicationData'
 
-import React, { useState } from "react";
+import React, { useReducer } from "react";
 
-const useApplicationData = () => {
-  const [state, setState] = useState({
-    selectedPhoto: null,
-    favourites: [],
-  });
+// ACTION TYPES:
+export const ACTIONS = {
+  TOGGLE_FAV_PHOTO: "TOGGLE_FAV_PHOTO",
+  SET_SELECTED_PHOTO: "SET_SELECTED_PHOTO",
+  CLOSE_PHOTO_DETAILS_MODAL: "CLOSE_PHOTO_DETAILS_MODAL",
+  ON_TOPIC_CLICK: "ON_TOPIC_CLICK",
+  ON_LOAD_TOPIC: "ON_LOAD_TOPIC",
+};
 
-  const updateFavs = (photoId) => {
-    setState((prev) => {
-      if (prev.favourites.includes(photoId)) {
+const initialState = {
+  favourites: [],
+  selectedPhoto: null,
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case ACTIONS.TOGGLE_FAV_PHOTO:
+      if (state.favourites.includes(action.payload.photoId)) {
         return {
-          ...prev,
-          favourites: prev.favourites.filter((id) => id !== photoId),
+          ...state,
+          favourites: state.favourites.filter(
+            (id) => id !== action.payload.photoId
+          ),
         };
       } else {
         return {
-          ...prev,
-          favourites: [...prev.favourites, photoId],
+          ...state,
+          favourites: [...state.favourites, action.payload.photoId],
         };
       }
-    });
+    case ACTIONS.SET_SELECTED_PHOTO:
+      return {
+        ...state,
+        selectedPhoto: action.payload.photoData,
+      };
+    case ACTIONS.CLOSE_PHOTO_DETAILS_MODAL:
+      return {
+        ...state,
+        selectedPhoto: null,
+      };
+    case ACTIONS.ON_TOPIC_CLICK:
+      console.log(`topic clicked with id ${action.payload.topicId}`);
+      return state;
+    case ACTIONS.ON_LOAD_TOPIC:
+      console.log(`onLoadTopic`);
+      return state;
+    default:
+      throw new Error(`Action type is unsupported for ${action.type}`);
+  }
+};
+
+const useApplicationData = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  // ACTION CREATORS
+
+  const updateFavs = (photoId) => {
+    dispatch({ type: ACTIONS.TOGGLE_FAV_PHOTO, payload: { photoId } });
   };
 
   const setSelectedPhoto = (photoData) => {
-    setState((prev) => ({
-      ...prev,
-      selectedPhoto: photoData,
-    }));
+    dispatch({ type: ACTIONS.SET_SELECTED_PHOTO, payload: { photoData } });
   };
 
   const onClosePhotoDetailsModal = () => {
-    setState((prev) => ({
-      ...prev,
-      selectedPhoto: null,
-    }));
+    dispatch({ type: ACTIONS.CLOSE_PHOTO_DETAILS_MODAL });
   };
-
-  const onLoadTopic = () => {};
-
   const onPhotoClick = (photoData) => {
-    setSelectedPhoto(photoData);
+    dispatch({ type: ACTIONS.SET_SELECTED_PHOTO, payload: { photoData } });
   };
 
-  const toggleFavouriteState = (photoID) => {
-    setState((prevState) => ({
-      ...prevState,
-      favourites: prevState.favourites.includes(photoID)
-        ? prevState.favourites.filter((id) => id !== photoID)
-        : [...prevState.favourites, photoID],
-    }));
+  const toggleFavouriteState = (photoId) => {
+    dispatch({ type: ACTIONS.TOGGLE_FAV_PHOTO, payload: { photoId } });
   };
   const onTopicClick = (topicId) => {
-    console.log("topic clicked with id ${topic.Id");
+    dispatch({ type: ACTIONS.ON_TOPIC_CLICK, payload: { topicId } });
+  };
+
+  const onLoadTopic = () => {
+    dispatch({ type: ACTIONS.ON_LOAD_TOPIC });
   };
 
   return {
     state,
     updateFavs,
-    toggleFavouriteState,
     setSelectedPhoto,
     onClosePhotoDetailsModal,
-    onLoadTopic,
-    onTopicClick,
     onPhotoClick,
+    toggleFavouriteState,
+    onTopicClick,
+    onLoadTopic,
   };
 };
 

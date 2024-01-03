@@ -4,6 +4,7 @@ import PhotoList from "components/PhotoList";
 import TopNavigation from "components/TopNavigationBar";
 import photos from "mocks/photos";
 import TopicList from "components/TopicList";
+import useApplicationData from "hooks/useApplicationData";
 
 const HomeRoute = ({
   topics,

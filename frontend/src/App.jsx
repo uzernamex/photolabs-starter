@@ -5,7 +5,6 @@ import HomeRoute from "routes/HomeRoute";
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
 import useApplicationData from "hooks/useApplicationData";
 
-
 const App = () => {
   const {
     state,
@@ -47,7 +46,7 @@ const App = () => {
             setSelectedPhoto={setSelectedPhoto} //cloSES WIth photo click
           />
         )}
-      ;
+
       <HomeRoute
         setModalOpen={setModalOpen}
         toggleFavouriteState={toggleFavouriteState}
