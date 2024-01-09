@@ -34,13 +34,13 @@ const HomeRoute = ({
   return (
     <div className="home-route">
       <TopNavigation
-        topics={topics}
+        // topics={topics}
         favouritesCount={state.favourites.length}
         fetchPhotosByTopic={fetchPhotosByTopic}
       />
       <TopicList
         topics={topics}
-        onTopicClick={onTopicClick}
+        // onTopicClick={onTopicClick}
         // fetchPhotosByTopic={fetchPhotosByTopic}
       />
 

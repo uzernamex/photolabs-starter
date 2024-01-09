@@ -1,4 +1,5 @@
-import React, { useState, useReducer, useEffect } from "react";
+import React, { useReducer, useEffect } from "react";
+
 // ACTION TYPES:
 const ACTIONS = {
   TOGGLE_FAV_PHOTO: "TOGGLE_FAV_PHOTO",
@@ -8,7 +9,9 @@ const ACTIONS = {
   ON_LOAD_TOPIC: "ON_LOAD_TOPIC",
   FETCH_PHOTOS_FOR_TOPIC: "FETCH_PHOTOS_FOR_TOPIC",
   SET_PHOTOS: "SET_PHOTOS",
+  GET_PHOTOS_BY_TOPIC: "GET_PHOTOS_BY_TOPIC",
 };
+
 // REACT HOOK: 'useApplicationData'
 
 const reducer = (state, action) => {
@@ -63,15 +66,9 @@ const reducer = (state, action) => {
       };
 
     case ACTIONS.ON_LOAD_TOPIC:
-      const { topicId: loadedTopicId, photosForTopic: loadedPhotosForTopic } =
-        action.payload;
       return {
         ...state,
-        selectedTopic: loadedTopicId,
-        photosByTopic: {
-          ...state.photosByTopic,
-          [loadedTopicId]: loadedPhotosForTopic,
-        },
+        topics: action.payload,
       };
 
     default:
@@ -112,6 +109,41 @@ const useApplicationData = () => {
       });
   }, []);
 
+  useEffect(() => {
+    const getPhotosByTopic = async (topicId) => {
+      try {
+        const response = await fetch(`http://localhost:8001/api/topics`);
+        const data = await response.json();
+        return data;
+      } catch (error) {
+        console.error("Unable to fetch selected photos:", error);
+        throw error;
+      }
+    };
+    const loadTopicPhotos = async () => {
+      if (state.selectedTopic) {
+        try {
+          const photosByTopic = await getPhotosByTopic(state.selectedTopic);
+          dispatch({
+            type: ACTIONS.GET_PHOTOS_BY_TOPIC,
+            payload: { topicId: state.selectedTopic, photosByTopic },
+          });
+        } catch (error) {
+          console.error("Error loading the photos:", error);
+        }
+      }
+    };
+    loadTopicPhotos();
+  }, [state.selectedTopic]);
+
+  const handleTopicClick = async (topicId) => {
+    try {
+      dispatch({ type: ACTIONS.ON_TOPIC_CLICK, payload: { topicId } });
+    } catch (error) {
+      console.error("Error handling topic click:", error);
+    }
+  };
+
   const updateFavs = (photoId) => {
     dispatch({ type: ACTIONS.TOGGLE_FAV_PHOTO, payload: { photoId } });
   };
@@ -130,34 +162,46 @@ const useApplicationData = () => {
   const toggleFavouriteState = (photoId) => {
     dispatch({ type: ACTIONS.TOGGLE_FAV_PHOTO, payload: { photoId } });
   };
-  const onTopicClick = (topicId) => {
-    dispatch({ type: ACTIONS.ON_TOPIC_CLICK, payload: { topicId } });
-  };
 
-  const onLoadTopic = async (topicId) => {
-    dispatch({ type: ACTIONS.ON_LOAD_TOPIC });
-    try {
-      const photosForTopic = await fetchPhotosForTopic(topicId);
-      dispatch({
-        type: ACTIONS.FETCH_PHOTOS_FOR_TOPIC,
-        payload: { topicId, photosForTopic },
-      });
-    } catch (error) {
-      console.error("Error loading topic:", error);
+  const onLoadTopic = (topicId) => {
+    const selectedTopic = state.topics.find((topic) => topic.id === topicId);
+    if (selectedTopic) {
+      const { slug, photo } = selectedTopic;
+      dispatch({ type: ACTIONS.ON_TOPIC_CLICK, payload: { topicId } });
+    } else {
+      console.error(`Topic with id ${topicId} not found.`);
     }
   };
-  const fetchPhotosForTopic = async (topicId) => {
-    try {
-      const response = await fetch(
-        `http://localhost:8001/api/topics/photos/${topicId}`
-      );
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error("Error fetching photos:", error);
-      throw error;
-    }
-  };
+  // onTopicClick(topics.ACTIONS.id);
+
+  // const onLoadTopic = (topicData) => {
+  //   dispatch({ type: ACTIONS.ON_LOAD_TOPIC, payload: topicData });
+  // };
+
+  // const onLoadTopic = async (topicId) => {
+  //   dispatch({ type: ACTIONS.ON_LOAD_TOPIC });
+  //   try {
+  //     const photosForTopic = await fetchPhotosForTopic(topicId);
+  //     dispatch({
+  //       type: ACTIONS.FETCH_PHOTOS_FOR_TOPIC,
+  //       payload: { topicId, photosForTopic },
+  //     });
+  //   } catch (error) {
+  //     console.error("Error loading topic:", error);
+  //   }
+  // };
+  // const fetchPhotosForTopic = async (topicId) => {
+  //   try {
+  //     const response = await fetch(
+  //       `http://localhost:8001/api/topics/photos/${topicId}`
+  //     );
+  //     const data = await response.json();
+  //     return data;
+  //   } catch (error) {
+  //     console.error("Error fetching photos:", error);
+  //     throw error;
+  //   }
+  // };
 
   return {
     state,
@@ -167,7 +211,7 @@ const useApplicationData = () => {
     onClosePhotoDetailsModal,
     onPhotoClick,
     toggleFavouriteState,
-    onTopicClick,
+    // onTopicClick,
     onLoadTopic,
   };
 };

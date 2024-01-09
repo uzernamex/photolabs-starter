@@ -12,13 +12,14 @@ const App = () => {
     setSelectedPhoto,
     onClosePhotoDetailsModal,
     handleButtonClick,
-    onTopicClick,
+   onTopicClick,
     onLoadTopic,
     state,
   } = useApplicationData();
 
   const [favourites, setFavourites] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
+
 
   const handleTopicClick = (topicId) => {
     onLoadTopic(topicId);
