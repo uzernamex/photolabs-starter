@@ -31,20 +31,25 @@ const sampleDataForTopicList = [
   },
 ];
 const TopicList = ({ topics = [], onTopicClick }) => {
-  const handleTopicClick = (topicId) => {
-    console.log("topic clicked!!!!!!!!!");
-    onTopicClick(topicId);
-  };
+  // const { onLoadTopic } = useApplicationData();
+
+  // const handleTopicClick = (topicId) => {
+  //   console.log("topic clicked!!!!!!!!!");
+  //    onTopicClick(topicId);
+  //   onLoadTopic();
+  // };
   return (
     <div className="top-nav-bar__topic-list">
       {topics.map((topic) => (
         <TopicListItem
           key={topic.id}
           topic={topic}
-          onTopicClick={handleTopicClick}
+          onTopicClick={onTopicClick}
+          // onTopicClick={handleTopicClick}
         />
       ))}
     </div>
+    
   );
 };
 

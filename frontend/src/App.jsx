@@ -7,7 +7,6 @@ import useApplicationData from "hooks/useApplicationData";
 
 const App = () => {
   const {
-    state,
     toggleFavouriteState,
     updateFavs,
     setSelectedPhoto,
@@ -15,6 +14,7 @@ const App = () => {
     handleButtonClick,
     onTopicClick,
     onLoadTopic,
+    state,
   } = useApplicationData();
 
   const [favourites, setFavourites] = useState([]);
@@ -46,7 +46,6 @@ const App = () => {
             setSelectedPhoto={setSelectedPhoto} //cloSES WIth photo click
           />
         )}
-
       <HomeRoute
         setModalOpen={setModalOpen}
         toggleFavouriteState={toggleFavouriteState}

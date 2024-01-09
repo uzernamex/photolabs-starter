@@ -1,6 +1,5 @@
 // REACT COMPONENT: 'PhotoList'
 // Render the list of photos
-
 import React from "react";
 import "../styles/PhotoList.scss";
 import PhotoFavButton from "./PhotoFavButton";
@@ -68,29 +67,30 @@ const PhotoList = ({
   setSelectedPhoto,
   handlePhotoClick,
   onTopicClick,
-  
 }) => {
   return (
     <div className="photo-list">
-      {photos.map((photo) => (
-        <div key={photo.id} className="photo-list__item">
-          <PhotoFavButton
-            photoID={photo.id}
-            toggleFavouriteState={toggleFavouriteState}
-            isFavourited={favourites.includes(photo.id)}
-          />
-          <PhotoListItem
-            key={photo.id}
-            data={photo}
-            toggleFavouriteState={toggleFavouriteState}
-            isFavourited={favourites.includes(photo.id)}
-            setModalOpen={setModalOpen}
-            setSelectedPhoto={setSelectedPhoto}
-            handlePhotoClick={handlePhotoClick}
-            onTopicClick={onTopicClick}
-          />
-        </div>
-      ))}
+      {Array.isArray(photos) &&
+        photos.map((photo) => (
+          <div key={photo.id} className="photo-list__item">
+            <PhotoFavButton
+              photoID={photo.id}
+              toggleFavouriteState={toggleFavouriteState}
+              isFavourited={favourites.includes(photo.id)}
+            />
+            <PhotoListItem
+              key={photo.id}
+              // photo={photo}
+              data={photo}
+              toggleFavouriteState={toggleFavouriteState}
+              isFavourited={favourites.includes(photo.id)}
+              setModalOpen={setModalOpen}
+              setSelectedPhoto={setSelectedPhoto}
+              handlePhotoClick={handlePhotoClick}
+              onTopicClick={onTopicClick}
+            />
+          </div>
+        ))}
     </div>
   );
 };

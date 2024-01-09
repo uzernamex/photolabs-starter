@@ -3,7 +3,9 @@
 
 import React, { useState } from "react";
 import "../styles/PhotoListItem.scss";
-
+// import useApplicationData from "hooks/useApplicationData";
+// import photos from "mocks/photos";
+// import PhotoList from "./PhotoList";
 const sampleDataForPhotoList = [
   {
     id: "1",
@@ -62,6 +64,8 @@ const sampleDataForPhotoList = [
 
 const PhotoListItem = ({
   data,
+  photo, 
+  photos, 
   // onClick,
   closedModal,
   // favouriteThisPhoto,

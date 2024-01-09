@@ -8,7 +8,7 @@ const cors = require("cors");
 
 const app = express();
 
-const db = require("./db")
+const db = require("./db");
 
 const photos = require("./routes/photos");
 const topics = require("./routes/topics");
@@ -18,7 +18,7 @@ function read(file) {
     fs.readFile(
       file,
       {
-        encoding: "utf-8"
+        encoding: "utf-8",
       },
       (error, data) => {
         if (error) return reject(error);
@@ -28,13 +28,11 @@ function read(file) {
   });
 }
 
-module.exports = function application(
-  ENV,
-) {
+module.exports = function application(ENV) {
   app.use(cors());
   app.use(helmet());
   app.use(bodyparser.json());
-  app.use(express.static(path.join(__dirname, 'public')));
+  app.use(express.static(path.join(__dirname, "public")));
 
   app.use("/api", photos(db));
   app.use("/api", topics(db));
@@ -54,7 +52,7 @@ module.exports = function application(
             });
         });
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(`Error setting up the reset route: ${error}`);
       });
   }

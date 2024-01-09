@@ -12,7 +12,7 @@ const TopNavigation = ({ topics, favouritesCount }) => {
   const handleTopicClick = async (topicID) => {
     try {
       const response = await fetch(
-        `http://localhost:8001/api/topics/photos/:topic_id,`
+        `http://localhost:8001/api/topics/photos/${topicID}`
       );
       const data = await response.json();
     } catch (error) {
