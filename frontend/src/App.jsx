@@ -11,26 +11,21 @@ const App = () => {
     updateFavs,
     setSelectedPhoto,
     onClosePhotoDetailsModal,
-    // handleButtonClick,
     handleTopicClick,
-    onLoadTopic,
-
     state,
   } = useApplicationData();
-  console.log(state.photos);
 
   const [favourites, setFavourites] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
 
-
   // const handleTopicClick = (topicId) => {
   //   onLoadTopic(topicId);
   // };
+
   const handlePhotoClick = (photoData) => {
     setModalOpen(true);
     setSelectedPhoto(photoData);
   };
-
   return (
     <div className="App">
       {modalOpen &&
@@ -45,7 +40,6 @@ const App = () => {
             toggleFavouriteState={toggleFavouriteState}
             isModalOpen={modalOpen}
             favourites={favourites}
-            // handleButtonClick={handleButtonClick}
             setSelectedPhoto={setSelectedPhoto} //cloSES WIth photo click
           />
         )}
@@ -59,7 +53,7 @@ const App = () => {
         setSelectedPhoto={setSelectedPhoto}
         onClosePhotoDetailsModal={onClosePhotoDetailsModal}
         handlePhotoClick={handlePhotoClick}
-        favourites={favourites}
+        favourites={state.favourites}
         onTopicClick={handleTopicClick}
       />
     </div>

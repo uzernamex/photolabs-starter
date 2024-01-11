@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import PhotoListItem from "components/PhotoListItem";
 import "../styles/PhotoDetailsModal.scss";
 import closeSymbol from "../assets/closeSymbol.svg";
 import PhotoFavButton from "components/PhotoFavButton";
@@ -71,17 +70,16 @@ const PhotoDetailsModal = ({
         <h2>Similar Photos</h2>
         <PhotoList
           photos={similarImages}
+          // toggleFavouriteState={updateFavs}
           toggleFavouriteState={toggleFavouriteState}
           favourites={state.favourites}
-           onClick={handlePhotoClick}
+          onClick={handlePhotoClick}
           selectedPhoto={state.selectedPhoto}
           onClose={onClose}
           state={state}
           setModalOpen={setModalOpen}
           isModalOpen={isModalOpen}
           setSelectedPhoto={setSelectedPhoto}
-          //  toggleFavouriteState={updateFavs}
-          // favourites={state.favourites}
           onPhotoClick={handlePhotoClick} ////////////
         />
       </div>

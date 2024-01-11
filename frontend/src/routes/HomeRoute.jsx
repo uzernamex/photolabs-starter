@@ -8,7 +8,7 @@ const HomeRoute = ({
   state,
   topics,
   photos,
-  updateFavs,
+  // updateFavs,
   toggleFavouriteState,
   setSelectedPhoto,
   onClosePhotoDetailsModal,
@@ -42,7 +42,8 @@ const HomeRoute = ({
       <PhotoList
         state={state}
         photos={photos}
-        toggleFavouriteState={updateFavs}
+        // toggleFavouriteState={updateFavs}
+        toggleFavouriteState={toggleFavouriteState}
         favourites={state.favourites}
         setModalOpen={setModalOpen}
         setSelectedPhoto={setSelectedPhoto}
