@@ -7,7 +7,7 @@ import TopicList from "./TopicList";
 
 const TopNavigation = ({ topics, favouritesCount, onTopicClick }) => {
   const [hasFavouritedPhotos, setHasFavouritedPhotos] = useState(false);
-  const [selectedTopic, setSelectedTopic] = useState();
+  // const [selectedTopic, setSelectedTopic] = useState();
 
   // const handleTopicClick = async (topics) => {
   //   try {

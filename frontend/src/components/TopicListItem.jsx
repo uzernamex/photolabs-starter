@@ -1,7 +1,8 @@
 //TopicListItem
 
-import React from "react";
+import {React, useState} from "react";
 import "../styles/TopicListItem.scss";
+import useApplicationData from "hooks/useApplicationData";
 
 // Render topic categories for photos
 

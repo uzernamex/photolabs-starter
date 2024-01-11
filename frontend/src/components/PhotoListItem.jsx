@@ -3,9 +3,6 @@
 
 import React, { useState } from "react";
 import "../styles/PhotoListItem.scss";
-// import useApplicationData from "hooks/useApplicationData";
-// import photos from "mocks/photos";
-// import PhotoList from "./PhotoList";
 
 // Handle the modal (open vs close), display photos and their details.
 
