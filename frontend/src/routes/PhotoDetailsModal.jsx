@@ -34,7 +34,7 @@ const PhotoDetailsModal = ({
   return (
     <div
       className={`photo-details-modal ${
-        onPhotoClickState ? "photo-details-modal" : ""
+        !isModalOpen ? "photo-details-modal" : ""
       }`}
     >
       <div className="photo-details-modal__top-bar">
