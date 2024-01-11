@@ -22,12 +22,11 @@ const PhotoDetailsModal = ({
 
   const handlePhotoClick = (photoData) => {
     setPhotoClicked(true);
-    // onPhotoClick(selectedPhoto);
     onPhotoClick(photoData);
   };
 
   const handleCloseButtonClick = () => {
-    // setPhotoClicked(false);
+    setPhotoClicked(false);
     setModalOpen(false);
     onClose();
   };
@@ -70,7 +69,6 @@ const PhotoDetailsModal = ({
         <h2>Similar Photos</h2>
         <PhotoList
           photos={similarImages}
-          // toggleFavouriteState={updateFavs}
           toggleFavouriteState={toggleFavouriteState}
           favourites={state.favourites}
           onClick={handlePhotoClick}
@@ -80,7 +78,7 @@ const PhotoDetailsModal = ({
           setModalOpen={setModalOpen}
           isModalOpen={isModalOpen}
           setSelectedPhoto={setSelectedPhoto}
-          onPhotoClick={handlePhotoClick} ////////////
+          onPhotoClick={handlePhotoClick}
         />
       </div>
     </div>

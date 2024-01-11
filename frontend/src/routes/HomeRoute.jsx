@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import TopNavigation from "components/TopNavigationBar";
 import "../styles/HomeRoute.scss";
 import PhotoList from "components/PhotoList";
+import PhotoListItem from "components/PhotoListItem";
 
 
 const HomeRoute = ({
@@ -38,11 +39,9 @@ const HomeRoute = ({
         fetchPhotosByTopic={fetchPhotosByTopic}
         onTopicClick={onTopicClick}
       />
-
       <PhotoList
         state={state}
         photos={photos}
-        // toggleFavouriteState={updateFavs}
         toggleFavouriteState={toggleFavouriteState}
         favourites={state.favourites}
         setModalOpen={setModalOpen}

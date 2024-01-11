@@ -8,18 +8,19 @@ import "../styles/PhotoFavButton.scss";
 
 const PhotoFavButton = ({ photoID, toggleFavouriteState, isFavourited }) => {
   const handleButtonClick = () => {
-    console.log("button clicked");
     toggleFavouriteState(photoID);
   };
   return (
-    <div
-      className={`photo-list__fav-icon-svg ${
-        isFavourited ? "photo-list__fav-icon" : ""
-      }`}
-      onClick={handleButtonClick}
-    >
-      {/* Change the like button to red when clicked  */}
-      <FavIcon selected={isFavourited} />
+    <div className="photo-list-item">
+      <div
+        className={`photo-list__fav-icon-svg ${
+          isFavourited ? "photo-list__fav-icon" : ""
+        } `}
+        onClick={handleButtonClick}
+      >
+        {/* Change the like button to red when clicked  */}
+        <FavIcon selected={isFavourited} />
+      </div>
     </div>
   );
 };

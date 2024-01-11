@@ -18,10 +18,6 @@ const App = () => {
   const [favourites, setFavourites] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
 
-  // const handleTopicClick = (topicId) => {
-  //   onLoadTopic(topicId);
-  // };
-
   const handlePhotoClick = (photoData) => {
     setModalOpen(true);
     setSelectedPhoto(photoData);

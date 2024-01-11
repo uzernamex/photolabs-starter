@@ -15,7 +15,6 @@ const PhotoList = ({
   onTopicClick,
   handleButtonClick,
 }) => {
-
   return (
     <div className="photo-list">
       {Array.isArray(photos) &&
@@ -28,8 +27,6 @@ const PhotoList = ({
               handleButtonClick={handleButtonClick}
             />
             <PhotoListItem
-              // key={photo.id}
-              // photo={photo}
               data={photo}
               toggleFavouriteState={toggleFavouriteState}
               isFavourited={favourites.includes(photo.id)}
