@@ -8,16 +8,19 @@ import useApplicationData, { ACTIONS } from "hooks/useApplicationData";
 import PhotoListItem from "components/PhotoListItem";
 
 const HomeRoute = ({
-  topics,
   state,
+  topics,
+  photos,
   updateFavs,
   toggleFavouriteState,
   setSelectedPhoto,
   onClosePhotoDetailsModal,
   onTopicClick,
+  
   handlePhotoClick,
   setModalOpen,
   fetchPhotosByTopic,
+  favourites,
 }) => {
   const closedModal = () => {
     setSelectedPhoto(null);
@@ -34,30 +37,32 @@ const HomeRoute = ({
   return (
     <div className="home-route">
       <TopNavigation
-        // topics={topics}
-        favouritesCount={state.favourites.length}
-        fetchPhotosByTopic={fetchPhotosByTopic}
-      />
-      <TopicList
         topics={topics}
-        // onTopicClick={onTopicClick}
-        // fetchPhotosByTopic={fetchPhotosByTopic}
+        favouritesCount={favourites.length}
+        fetchPhotosByTopic={fetchPhotosByTopic}
+        onTopicClick={onTopicClick}
       />
+      {/* <TopicList
+        topics={topics}
+        onTopicClick={onTopicClick} */}
+      {/* // fetchPhotosByTopic={fetchPhotosByTopic} */}
+      {/* /> */}
 
-      {/* <PhotoListItem
+       {/* <PhotoListItem
         state={state}
         // photos={photos}
         // photos={state.setSelectedPhoto} //ackend data:?
-        photos={state.photosByTopic[state.selectedTopic]}
+        // photos={state.photosByTopic[state.selectedTopic]}
         toggleFavouriteState={updateFavs}
         favourites={state.favourites}
         setModalOpen={setModalOpen}
         setSelectedPhoto={setSelectedPhoto}
-        handlePhotoClick={handlePhotoClick} */}
-      {/* /> */}
+        handleButtonClick={handleButtonClick}
+        handlePhotoClick={handlePhotoClick}
+      />  */}
       <PhotoList
-        state={state} /////
-        photos={state.photos}
+        // state={state} /////
+        photos={photos}
         toggleFavouriteState={updateFavs}
         favourites={state.favourites}
         // photos={state.setSelectedPhoto} //ackend data:?

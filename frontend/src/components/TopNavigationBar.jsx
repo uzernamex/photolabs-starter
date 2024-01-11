@@ -5,20 +5,20 @@ import TopicList from "./TopicList";
 
 // Navigation bar
 
-const TopNavigation = ({ topics, favouritesCount }) => {
+const TopNavigation = ({ topics, favouritesCount, onTopicClick }) => {
   const [hasFavouritedPhotos, setHasFavouritedPhotos] = useState(false);
   const [selectedTopic, setSelectedTopic] = useState();
 
-  const handleTopicClick = async (topics) => {
-    try {
-      const response = await fetch('http://localhost:8001/api/topics'
-      );
-      const data = await response.json();
-    } catch (error) {
-      console.error("Unable to retrieve requested photos:", error);
-    }
-    setSelectedTopic(topics);
-  };
+  // const handleTopicClick = async (topics) => {
+  //   try {
+  //     const response = await fetch('http://localhost:8001/api/topics'
+  //     );
+  //     const data = await response.json();
+  //   } catch (error) {
+  //     console.error("Unable to retrieve requested photos:", error);
+  //   }
+  //   setSelectedTopic(topics);
+  // };
 
   useEffect(() => {
     const checkFavouritedPhotos = () => {
@@ -31,8 +31,8 @@ const TopNavigation = ({ topics, favouritesCount }) => {
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
-      {/* <TopicList onTopicClick={handleTopicClick} /> */}
-    
+      <TopicList onTopicClick={onTopicClick} topics={topics} />
+
       <FavBadge isFavPhotoExist={hasFavouritedPhotos} />
     </div>
   );

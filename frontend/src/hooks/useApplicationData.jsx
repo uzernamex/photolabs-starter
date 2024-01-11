@@ -31,6 +31,8 @@ const reducer = (state, action) => {
         };
       }
     case ACTIONS.SET_PHOTOS:
+      console.log(action.payload);
+
       return { ...state, photos: action.payload };
 
     case ACTIONS.SET_SELECTED_PHOTO:
@@ -44,24 +46,23 @@ const reducer = (state, action) => {
         selectedPhoto: null,
       };
 
-    case ACTIONS.ON_TOPIC_CLICK:
-      const topicId = action.payload.topicId;
-      const selectedTopic = state.topics.find((topic) => topic.id === topicId);
-      const photosForTopic = state.photos.filter(
-        (photo) => photo.topicID === topicId
-      );
+    // case ACTIONS.ON_TOPIC_CLICK:
+    //   const topicId = action.payload.topicId;
+    //   const selectedTopic = state.topics.find((topic) => topic.id === topicId);
+    //   const photosForTopic = state.photos.filter(
+    //     (photo) => photo.topicID === topicId
+    //   );
+    //   return {
+    //     ...state,
+    //     selectedTopic: topicId,
+    //     photosByTopic: {
+    //       ...state.photosByTopic,
+    //       [topicId]: photosForTopic,
+    //     },
+    //   };
+    case ACTIONS.GET_PHOTOS_BY_TOPIC:
       return {
         ...state,
-        selectedTopic: topicId,
-        photosByTopic: {
-          ...state.photosByTopic,
-          [topicId]: photosForTopic,
-        },
-      };
-    case ACTIONS.FETCH_PHOTOS_FOR_TOPIC:
-      return {
-        ...state,
-        selectedPhoto: action.payload,
         photos: action.payload,
       };
 
@@ -75,73 +76,31 @@ const reducer = (state, action) => {
       throw new Error(`Action type is unsupported for ${action.type}`);
   }
 };
-
+const initialState = {
+  selectedPhoto: null,
+  favourites: [],
+  photos: [],
+  photosByTopic: {},
+  similarPhotos: [],
+  topics: [],
+};
 const useApplicationData = () => {
-  const initialState = {
-    selectedPhoto: null,
-    favourites: [],
-    photos: [],
-    photosByTopic: {},
-    similarPhotos: [],
-    topics: [],
-  };
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  // const updateFavs = (photoId) => {
-  //   setState((prev) => {
-  //     if (prev.favourites.includes(photoId)) {
 
   // ACTION CREATORS
+  const handleTopicClick = async (topicId) => {
+    fetch(`http://localhost:8001/api/topics/photos/${topicId}`)
+      .then((response) => {
+        console.log("response received");
+        return response.json();
+      })
 
-  useEffect(() => {
-    fetch("http://localhost:8001/api/photos")
-      .then((response) => response.json())
       .then((photoData) => {
+        console.log("dispatching action");
+        console.log(photoData);
         dispatch({ type: ACTIONS.SET_PHOTOS, payload: photoData });
       });
-  }, []);
-
-  useEffect(() => {
-    fetch("http://localhost:8001/api/topics")
-      .then((response) => response.json())
-      .then((topicData) => {
-        dispatch({ type: ACTIONS.ON_LOAD_TOPIC, payload: topicData });
-      });
-  }, []);
-
-  useEffect(() => {
-    const getPhotosByTopic = async (topicId) => {
-      try {
-        const response = await fetch(`http://localhost:8001/api/topics`);
-        const data = await response.json();
-        return data;
-      } catch (error) {
-        console.error("Unable to fetch selected photos:", error);
-        throw error;
-      }
-    };
-    const loadTopicPhotos = async () => {
-      if (state.selectedTopic) {
-        try {
-          const photosByTopic = await getPhotosByTopic(state.selectedTopic);
-          dispatch({
-            type: ACTIONS.GET_PHOTOS_BY_TOPIC,
-            payload: { topicId: state.selectedTopic, photosByTopic },
-          });
-        } catch (error) {
-          console.error("Error loading the photos:", error);
-        }
-      }
-    };
-    loadTopicPhotos();
-  }, [state.selectedTopic]);
-
-  const handleTopicClick = async (topicId) => {
-    try {
-      dispatch({ type: ACTIONS.ON_TOPIC_CLICK, payload: { topicId } });
-    } catch (error) {
-      console.error("Error handling topic click:", error);
-    }
   };
 
   const updateFavs = (photoId) => {
@@ -202,6 +161,24 @@ const useApplicationData = () => {
   //     throw error;
   //   }
   // };
+  console.log("state in application");
+  console.log(state.photos);
+
+  useEffect(() => {
+    fetch("http://localhost:8001/api/photos")
+      .then((response) => response.json())
+      .then((photoData) => {
+        dispatch({ type: ACTIONS.SET_PHOTOS, payload: photoData });
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:8001/api/topics")
+      .then((response) => response.json())
+      .then((topicData) => {
+        dispatch({ type: ACTIONS.ON_LOAD_TOPIC, payload: topicData });
+      });
+  }, []);
 
   return {
     state,
@@ -212,7 +189,10 @@ const useApplicationData = () => {
     onPhotoClick,
     toggleFavouriteState,
     // onTopicClick,
+    handleTopicClick, 
+    // handleButtonClick,
     onLoadTopic,
+    handleTopicClick,
   };
 };
 

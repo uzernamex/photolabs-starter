@@ -8,6 +8,7 @@ import "../styles/PhotoFavButton.scss";
 
 const PhotoFavButton = ({ photoID, toggleFavouriteState, isFavourited }) => {
   const handleButtonClick = () => {
+    console.log("button clicked");
     toggleFavouriteState(photoID);
   };
   return (
