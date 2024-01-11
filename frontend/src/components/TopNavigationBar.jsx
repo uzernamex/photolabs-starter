@@ -32,7 +32,6 @@ const TopNavigation = ({ topics, favouritesCount, onTopicClick }) => {
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
       <TopicList onTopicClick={onTopicClick} topics={topics} />
-
       <FavBadge isFavPhotoExist={hasFavouritedPhotos} />
     </div>
   );

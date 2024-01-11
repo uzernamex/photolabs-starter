@@ -87,7 +87,6 @@ const initialState = {
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-
   // ACTION CREATORS
   const handleTopicClick = async (topicId) => {
     fetch(`http://localhost:8001/api/topics/photos/${topicId}`)
@@ -182,15 +181,12 @@ const useApplicationData = () => {
 
   return {
     state,
-    // dispatch,
     updateFavs,
     setSelectedPhoto,
     onClosePhotoDetailsModal,
     onPhotoClick,
     toggleFavouriteState,
-    // onTopicClick,
-    handleTopicClick, 
-    // handleButtonClick,
+    handleTopicClick,
     onLoadTopic,
     handleTopicClick,
   };

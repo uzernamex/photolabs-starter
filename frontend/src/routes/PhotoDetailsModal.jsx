@@ -6,8 +6,6 @@ import PhotoFavButton from "components/PhotoFavButton";
 import PhotoList from "components/PhotoList";
 
 const PhotoDetailsModal = ({
-  data,
-  // onClick,
   selectedPhoto,
   similarImages,
   onClose,
@@ -24,7 +22,7 @@ const PhotoDetailsModal = ({
   const [onPhotoClickState, setPhotoClicked] = useState(isModalOpen);
 
   const handlePhotoClick = (photoData) => {
-    // setPhotoClicked(true);
+    setPhotoClicked(true);
     // onPhotoClick(selectedPhoto);
     onPhotoClick(photoData);
   };
@@ -39,7 +37,8 @@ const PhotoDetailsModal = ({
     <div
       className={`photo-details-modal ${
         onPhotoClickState ? "photo-details-modal" : ""
-      }`}>
+      }`}
+    >
       <div className="photo-details-modal__top-bar">
         {" "}
         {/* {onPhotoClickState && ( */}
@@ -52,12 +51,11 @@ const PhotoDetailsModal = ({
         {/* )} */}
       </div>
       <div className={`photo-details-modal__images`}>
-        <PhotoFavButton 
-        photoID={selectedPhoto.id}
-        toggleFavouriteState={toggleFavouriteState}
-        isFavourited={favourites.includes(selectedPhoto.id)}
-
-         /> 
+        <PhotoFavButton
+          photoID={selectedPhoto.id}
+          toggleFavouriteState={toggleFavouriteState}
+          isFavourited={favourites.includes(selectedPhoto.id)}
+        />
         <img
           className="photo-details-modal__image"
           src={regular} //photo in modal
@@ -75,25 +73,16 @@ const PhotoDetailsModal = ({
           photos={similarImages}
           toggleFavouriteState={toggleFavouriteState}
           favourites={state.favourites}
-          // onClick={handlePhotoClick}
+           onClick={handlePhotoClick}
           selectedPhoto={state.selectedPhoto}
           onClose={onClose}
           state={state}
           setModalOpen={setModalOpen}
           isModalOpen={isModalOpen}
           setSelectedPhoto={setSelectedPhoto}
-          // photos={photos}
           //  toggleFavouriteState={updateFavs}
           // favourites={state.favourites}
           onPhotoClick={handlePhotoClick} ////////////
-          // setModalOpen={setModalOpen}
-          // setSelectedPhoto={setSelectedPhoto}
-          // onPhotoClick={handlePhotoClick}
-          //  onPhotoClick={(photoData) => setSelectedPhoto(photoData)}
-          // onClose={handleCloseModal}
-          // toggleModal={toggleModal}
-          // setModalOpen={setModalOpen}
-          // setSelectedPhoto={setSelectedPhoto}
         />
       </div>
     </div>

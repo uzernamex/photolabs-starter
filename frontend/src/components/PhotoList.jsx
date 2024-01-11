@@ -28,7 +28,7 @@ const PhotoList = ({
               handleButtonClick={handleButtonClick}
             />
             <PhotoListItem
-              key={photo.id}
+              // key={photo.id}
               // photo={photo}
               data={photo}
               toggleFavouriteState={toggleFavouriteState}
