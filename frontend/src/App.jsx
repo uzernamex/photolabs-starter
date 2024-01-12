@@ -15,7 +15,7 @@ const App = () => {
     state,
   } = useApplicationData();
 
-  const [favourites, setFavourites] = useState([]);
+  const [favourites] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
 
   const handlePhotoClick = (photoData) => {
@@ -28,21 +28,21 @@ const App = () => {
         state.selectedPhoto &&
         state.selectedPhoto.similar_photos && (
           <PhotoDetailsModal
-            similarImages={Object.values(state.selectedPhoto.similar_photos)} //get values as array
-            selectedPhoto={state.selectedPhoto} //Modal open (photo)
+            similarImages={Object.values(state.selectedPhoto.similar_photos)}
+            selectedPhoto={state.selectedPhoto} // Open modal (photo)
             onClose={onClosePhotoDetailsModal}
             state={state}
             setModalOpen={setModalOpen}
             toggleFavouriteState={toggleFavouriteState}
             isModalOpen={modalOpen}
             favourites={favourites}
-            setSelectedPhoto={setSelectedPhoto} //cloSES WIth photo click
+            setSelectedPhoto={setSelectedPhoto}
           />
         )}
       <HomeRoute
         setModalOpen={setModalOpen}
         toggleFavouriteState={toggleFavouriteState}
-        topics={topics} //topics array
+        topics={topics}
         state={state}
         photos={state.photos}
         updateFavs={updateFavs}

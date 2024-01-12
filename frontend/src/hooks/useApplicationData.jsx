@@ -1,6 +1,5 @@
 import React, { useReducer, useEffect } from "react";
 
-// ACTION TYPES:
 const ACTIONS = {
   TOGGLE_FAV_PHOTO: "TOGGLE_FAV_PHOTO",
   SET_SELECTED_PHOTO: "SET_SELECTED_PHOTO",
@@ -11,8 +10,6 @@ const ACTIONS = {
   SET_PHOTOS: "SET_PHOTOS",
   GET_PHOTOS_BY_TOPIC: "GET_PHOTOS_BY_TOPIC",
 };
-
-// REACT HOOK: 'useApplicationData'
 
 const reducer = (state, action) => {
   switch (action.type) {
