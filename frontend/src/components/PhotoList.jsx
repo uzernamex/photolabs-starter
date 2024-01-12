@@ -1,5 +1,5 @@
-// REACT COMPONENT: 'PhotoList'
 // Render the list of photos
+
 import React from "react";
 import "../styles/PhotoList.scss";
 import PhotoFavButton from "./PhotoFavButton";
@@ -29,7 +29,6 @@ const PhotoList = ({
             <PhotoListItem
               data={photo}
               toggleFavouriteState={toggleFavouriteState}
-              isFavourited={favourites.includes(photo.id)}
               setModalOpen={setModalOpen}
               setSelectedPhoto={setSelectedPhoto}
               handlePhotoClick={handlePhotoClick}

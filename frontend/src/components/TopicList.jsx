@@ -1,5 +1,4 @@
-// COMPONENT: 'TopicList'
-// Use COMPONENT 'TopicListItem' to render a list of topics
+// Use with COMPONENT 'TopicListItem' to render a list of topics
 
 import React from "react";
 import TopicListItem from "./TopicListItem";

@@ -1,8 +1,7 @@
-// REACT COMPONENT: 'PhotoFavButton'
 // Use FUNCTION 'toggleFavouriteState' to favourite photos
 // Use COMPONENT 'FavIcon' for visual representation
 
-import React, { useState } from "react";
+import React from "react";
 import FavIcon from "./FavIcon";
 import "../styles/PhotoFavButton.scss";
 
@@ -18,7 +17,6 @@ const PhotoFavButton = ({ photoID, toggleFavouriteState, isFavourited }) => {
         } `}
         onClick={handleButtonClick}
       >
-        {/* Change the like button to red when clicked  */}
         <FavIcon selected={isFavourited} />
       </div>
     </div>

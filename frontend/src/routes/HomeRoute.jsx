@@ -4,27 +4,18 @@ import "../styles/HomeRoute.scss";
 import PhotoList from "components/PhotoList";
 import PhotoListItem from "components/PhotoListItem";
 
-
 const HomeRoute = ({
   state,
   topics,
   photos,
-  // updateFavs,
   toggleFavouriteState,
   setSelectedPhoto,
-  onClosePhotoDetailsModal,
   onTopicClick,
   handlePhotoClick,
   setModalOpen,
   fetchPhotosByTopic,
   favourites,
 }) => {
-  const closedModal = () => {
-    setSelectedPhoto(null);
-    onClosePhotoDetailsModal();
-  };
-  const [fetchedPhotos, setFetchedPhotos] = useState([]);
-
   useEffect(() => {
     if (state.selectedTopic) {
       onLoadTopic(state.selectedTopic.id);

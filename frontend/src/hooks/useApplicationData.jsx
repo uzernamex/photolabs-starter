@@ -101,7 +101,7 @@ const useApplicationData = () => {
         dispatch({ type: ACTIONS.SET_PHOTOS, payload: photoData });
       })
       .catch((error) => {
-        console.error(error);
+        console.error("An error occurred during fetch:", error.message);
       });
   };
 
@@ -137,14 +137,6 @@ const useApplicationData = () => {
     }
   };
 
-  // useEffect(() => {
-  //   fetch(`/api/photos`)
-  //     .then((response) => response.json())
-  //     .then((photoData) => {
-  //       dispatch({ type: ACTIONS.SET_PHOTOS, payload: photoData });
-  //     });
-  // }, []);
-
   useEffect(() => {
     fetch(`/api/photos`)
       .then((response) => {
@@ -160,14 +152,6 @@ const useApplicationData = () => {
         console.error("An error occurred during fetch:", error.message);
       });
   }, []);
-
-  // useEffect(() => {
-  //   fetch(`/api/topics`)
-  //     .then((response) => response.json())
-  //     .then((topicData) => {
-  //       dispatch({ type: ACTIONS.ON_LOAD_TOPIC, payload: topicData });
-  //     });
-  // }, []);
 
   useEffect(() => {
     fetch(`/api/topics`)

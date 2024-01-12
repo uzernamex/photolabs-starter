@@ -14,20 +14,15 @@ const PhotoDetailsModal = ({
   state,
   setSelectedPhoto,
   toggleFavouriteState,
-  favourites,
-  handleButtonClick,
 }) => {
   const { urls } = selectedPhoto || {};
   const { regular } = urls || {};
-  const [onPhotoClickState, setPhotoClicked] = useState(isModalOpen);
 
   const handlePhotoClick = (photoData) => {
-    // setPhotoClicked(true);
     onPhotoClick(photoData);
   };
 
   const handleCloseButtonClick = () => {
-    // setPhotoClicked(false);
     setModalOpen(false);
     onClose();
   };
@@ -68,22 +63,22 @@ const PhotoDetailsModal = ({
         <div className="photo-list__user-info">
           <div className="photo-list__user-location"></div>
         </div>
-      </div>
-      <div className="photo-details-modal__similar-photos-list">
-        <h2>Similar Photos</h2>
-        <PhotoList
-          state={state}
-          photos={similarImages}
-          toggleFavouriteState={toggleFavouriteState}
-          favourites={state.favourites}
-          onClick={handlePhotoClick}
-          selectedPhoto={state.selectedPhoto}
-          onClose={onClose}
-          setModalOpen={setModalOpen}
-          isModalOpen={isModalOpen}
-          setSelectedPhoto={setSelectedPhoto}
-          onPhotoClick={handlePhotoClick}
-        />
+        <div className="photo-details-modal__similar-photos-list">
+          <h2> Similar Photos </h2>
+          <PhotoList
+            state={state}
+            photos={similarImages}
+            toggleFavouriteState={toggleFavouriteState}
+            favourites={state.favourites}
+            onClick={handlePhotoClick}
+            selectedPhoto={state.selectedPhoto}
+            onClose={onClose}
+            setModalOpen={setModalOpen}
+            isModalOpen={isModalOpen}
+            setSelectedPhoto={setSelectedPhoto}
+            onPhotoClick={handlePhotoClick}
+          />
+        </div>
       </div>
     </div>
   );

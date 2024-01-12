@@ -1,10 +1,9 @@
-//TopicListItem
+// Render topic categories for photos
 
 import {React, useState} from "react";
 import "../styles/TopicListItem.scss";
 import useApplicationData from "hooks/useApplicationData";
 
-// Render topic categories for photos
 
 const TopicListItem = ({ topic, onTopicClick }) => {
   const handleClick = () => {
