@@ -7,19 +7,6 @@ import TopicList from "./TopicList";
 
 const TopNavigation = ({ topics, favouritesCount, onTopicClick }) => {
   const [hasFavouritedPhotos, setHasFavouritedPhotos] = useState(false);
-  // const [selectedTopic, setSelectedTopic] = useState();
-
-  // const handleTopicClick = async (topics) => {
-  //   try {
-  //     const response = await fetch('http://localhost:8001/api/topics'
-  //     );
-  //     const data = await response.json();
-  //   } catch (error) {
-  //     console.error("Unable to retrieve requested photos:", error);
-  //   }
-  //   setSelectedTopic(topics);
-  // };
-
   useEffect(() => {
     const checkFavouritedPhotos = () => {
       setHasFavouritedPhotos(favouritesCount > 0);

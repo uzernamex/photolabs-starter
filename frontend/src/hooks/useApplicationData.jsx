@@ -100,10 +100,9 @@ const initialState = {
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  // ACTION CREATORS
 
   const handleTopicClick = async (topicId) => {
-    fetch(`http://localhost:8001/api/topics/photos/${topicId}`)
+    fetch(`/api/topics/photos/${topicId}`)
       .then((response) => {
         return response.json();
       })
@@ -145,7 +144,7 @@ const useApplicationData = () => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:8001/api/photos")
+    fetch(`/api/photos`)
       .then((response) => response.json())
       .then((photoData) => {
         dispatch({ type: ACTIONS.SET_PHOTOS, payload: photoData });
@@ -153,7 +152,7 @@ const useApplicationData = () => {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:8001/api/topics")
+    fetch(`/api/topics`)
       .then((response) => response.json())
       .then((topicData) => {
         dispatch({ type: ACTIONS.ON_LOAD_TOPIC, payload: topicData });
