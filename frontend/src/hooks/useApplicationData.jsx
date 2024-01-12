@@ -60,19 +60,6 @@ const reducer = (state, action) => {
         },
       };
 
-    //   const topicId = action.payload.topicId;
-    //   const selectedTopic = state.topics.find((topic) => topic.id === topicId);
-    //   const photosForTopic = state.photos.filter(
-    //     (photo) => photo.topicID === topicId
-    //   );
-    //   return {
-    //     ...state,
-    //     selectedTopic: topicId,
-    //     photosByTopic: {
-    //       ...state.photosByTopic,
-    //       [topicId]: photosForTopic,
-    //     },
-    //   };
     case ACTIONS.GET_PHOTOS_BY_TOPIC:
       return {
         ...state,
@@ -100,14 +87,21 @@ const initialState = {
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-
   const handleTopicClick = async (topicId) => {
     fetch(`/api/topics/photos/${topicId}`)
       .then((response) => {
+        if (!response.ok) {
+          throw new Error(
+            `The photos for ${topicId} cannot be displayed at this time.`
+          );
+        }
         return response.json();
       })
       .then((photoData) => {
         dispatch({ type: ACTIONS.SET_PHOTOS, payload: photoData });
+      })
+      .catch((error) => {
+        console.error(error);
       });
   };
 
@@ -143,19 +137,51 @@ const useApplicationData = () => {
     }
   };
 
+  // useEffect(() => {
+  //   fetch(`/api/photos`)
+  //     .then((response) => response.json())
+  //     .then((photoData) => {
+  //       dispatch({ type: ACTIONS.SET_PHOTOS, payload: photoData });
+  //     });
+  // }, []);
+
   useEffect(() => {
     fetch(`/api/photos`)
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("The requested images are unavailable at this time.");
+        }
+        return response.json();
+      })
       .then((photoData) => {
         dispatch({ type: ACTIONS.SET_PHOTOS, payload: photoData });
+      })
+      .catch((error) => {
+        console.error("An error occurred during fetch:", error.message);
       });
   }, []);
 
+  // useEffect(() => {
+  //   fetch(`/api/topics`)
+  //     .then((response) => response.json())
+  //     .then((topicData) => {
+  //       dispatch({ type: ACTIONS.ON_LOAD_TOPIC, payload: topicData });
+  //     });
+  // }, []);
+
   useEffect(() => {
     fetch(`/api/topics`)
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch topics.");
+        }
+        return response.json();
+      })
       .then((topicData) => {
         dispatch({ type: ACTIONS.ON_LOAD_TOPIC, payload: topicData });
+      })
+      .catch((error) => {
+        console.error("An error occurred during fetch:", error.message);
       });
   }, []);
 
@@ -168,7 +194,6 @@ const useApplicationData = () => {
     toggleFavouriteState,
     handleTopicClick,
     onLoadTopic,
-    handleTopicClick,
   };
 };
 
